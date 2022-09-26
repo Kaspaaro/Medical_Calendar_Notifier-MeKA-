@@ -1,13 +1,15 @@
 package com.example.mekaproj;
 
 public class PaivaKirjaData {
+    private int id;
     private String otsikko;
     private String kirje;
     private boolean isActive; //Varmuuden vuoksi boolean tänne jotta voi checkata onko true tai false.
 
-    public PaivaKirjaData (String otsikko, String kirje) {
+    public PaivaKirjaData (int id,String otsikko, String kirje) {
         this.otsikko = otsikko;
         this.kirje = kirje;
+        this.id = id;
     }
 
     @Override
@@ -21,6 +23,9 @@ public class PaivaKirjaData {
     }
 
     // Getterit ja Setterit!
+    public Integer getID(){
+        return id;
+    }
     public String getOtsikko() {
 
         return otsikko;
