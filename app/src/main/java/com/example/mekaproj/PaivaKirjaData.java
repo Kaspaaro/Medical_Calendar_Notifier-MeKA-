@@ -44,5 +44,5 @@ public class PaivaKirjaData {
     public void setActive(boolean active) {
         isActive = active;
     }
-    ////////////////////////////////////////
+    ////////
 }
