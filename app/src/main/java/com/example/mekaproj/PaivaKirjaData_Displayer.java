@@ -24,7 +24,7 @@ public class PaivaKirjaData_Displayer extends AppCompatActivity {
         lv_Paivakirjadata = findViewById(R.id.pkDATADISPLAY);
 
         MekaDataBase mekaDataBase = new MekaDataBase(PaivaKirjaData_Displayer.this);
-
+        //palauttaa kaiken datan SQLitesta
         List<PaivaKirjaData> everything = mekaDataBase.getEverything();
 
         // Kirjoitaa arvot viewlistalle databasesta.

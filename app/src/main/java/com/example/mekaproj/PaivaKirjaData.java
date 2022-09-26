@@ -14,18 +14,20 @@ public class PaivaKirjaData {
 
     @Override
     public String toString() {
-        return "PaivaKirjaData{" +
-                "otsikko='" + otsikko + '\'' +
-                ", kirje='" + kirje + '\'' +
-                '}';
+        return "Otsikko: " +
+                otsikko + '\n' +
+               "Teksti: " + kirje + '\n'
+                ;
     }
 
     // Getterit ja Setterit!
     public String getOtsikko() {
+
         return otsikko;
     }
 
     public String getKirje() {
+
         return kirje;
     }
 
