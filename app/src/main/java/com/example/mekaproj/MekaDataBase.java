@@ -1,6 +1,7 @@
 package com.example.mekaproj;
 import android.content.ContentValues;
 import android.content.Context;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
@@ -53,9 +54,32 @@ public class MekaDataBase extends SQLiteOpenHelper{
         }
 
     }
-    public List<PaivaKirjaData> getAll() {
+    public List<PaivaKirjaData> getEverything() {
         List<PaivaKirjaData> returnList = new ArrayList<>();
+        // Get data from database (ottaa dataa databasesta)
+        String queryString = "SELECT * FROM " + PAIVAKIRJA_TABLE;
 
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            do {
+                int RiviID = cursor.getInt(0);
+                String paivakirjaOtsikko = cursor.getString(1);
+                String paivakirjaKirje = cursor.getString(2);
+                PaivaKirjaData paivaKirjaData = new PaivaKirjaData(paivakirjaOtsikko,paivakirjaKirje);
+                returnList.add(paivaKirjaData);
+            }while (cursor.moveToNext());
+
+
+        }else {
+            //fail älä lisää mitään
+        }
+
+        // sulje db ja cursor kun on valmista
+        cursor.close();
+        db.close();
         return returnList;
     }
 }

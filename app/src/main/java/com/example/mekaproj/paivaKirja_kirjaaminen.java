@@ -2,11 +2,14 @@ package com.example.mekaproj;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
+
+import java.util.List;
 
 public class paivaKirja_kirjaaminen extends AppCompatActivity {
 
@@ -26,6 +29,7 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
 
         ///Button Listeners
         btnTallennaPK.setOnClickListener(new View.OnClickListener() {
+
             @Override
             public void onClick(View view) {
 
@@ -45,7 +49,11 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
                 //Datan lähettäminen
                 boolean success = mekaDataBase.addOne(paivaKirjaData);
                 Toast.makeText(paivaKirja_kirjaaminen.this,"SUCCESS= " + success,Toast.LENGTH_SHORT).show();
+                Intent intent = new Intent(paivaKirja_kirjaaminen.this, PaivaKirjaData_Displayer.class);
+                startActivity(intent);
+
             }
+
         });
     }
 }
