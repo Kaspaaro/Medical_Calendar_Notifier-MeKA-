@@ -17,4 +17,8 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, paivaKirja_kirjaaminen.class);
         startActivity(intent);
     }
+    public void btn_paivakirjadata(View view) {
+        Intent intent = new Intent(this, PaivaKirjaData_Displayer.class);
+        startActivity(intent);
+    }
 }
