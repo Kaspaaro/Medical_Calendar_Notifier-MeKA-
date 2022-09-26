@@ -28,7 +28,7 @@ public class PaivaKirjaData_Displayer extends AppCompatActivity {
         List<PaivaKirjaData> everything = mekaDataBase.getEverything();
 
         // Kirjoitaa arvot viewlistalle databasesta.
-        PaivakirjaArrayAdapter = new ArrayAdapter<PaivaKirjaData>(PaivaKirjaData_Displayer.this, android.R.layout.simple_selectable_list_item, everything);
+        PaivakirjaArrayAdapter = new ArrayAdapter<PaivaKirjaData>(PaivaKirjaData_Displayer.this, android.R.layout.simple_list_item_multiple_choice, everything);
 
         lv_Paivakirjadata.setAdapter(PaivakirjaArrayAdapter);
     }

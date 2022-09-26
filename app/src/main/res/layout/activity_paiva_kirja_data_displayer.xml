@@ -10,7 +10,7 @@
         android:id="@+id/pkDATADISPLAY"
         android:layout_width="400dp"
         android:layout_height="588dp"
-        android:layout_marginBottom="55dp"
+        android:layout_marginBottom="70dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
