@@ -6,6 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class MekaDataBase extends SQLiteOpenHelper{
 
 
@@ -49,5 +52,10 @@ public class MekaDataBase extends SQLiteOpenHelper{
             return true;
         }
 
+    }
+    public List<PaivaKirjaData> getAll() {
+        List<PaivaKirjaData> returnList = new ArrayList<>();
+
+        return returnList;
     }
 }
