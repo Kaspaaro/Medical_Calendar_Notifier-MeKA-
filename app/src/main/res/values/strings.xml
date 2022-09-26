@@ -3,4 +3,5 @@
     <string name="KirjanTeksti">Kirjoita tänne jotain...</string>
     <string name="Meka">MeKa</string>
     <string name="MeKaDESC">Medical Kalenteri</string>
+    <string name="Delete">DELETE</string>
 </resources>

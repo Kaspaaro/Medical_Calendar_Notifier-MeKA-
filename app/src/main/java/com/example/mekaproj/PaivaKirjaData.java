@@ -9,10 +9,10 @@ public class PaivaKirjaData {
         this.otsikko = otsikko;
         this.kirje = kirje;
     }
-    // Tostring
-
 
     @Override
+
+    //Tallenetut Rivit Viewlist Tostring.
     public String toString() {
         return "Otsikko: " +
                 otsikko + '\n' +
