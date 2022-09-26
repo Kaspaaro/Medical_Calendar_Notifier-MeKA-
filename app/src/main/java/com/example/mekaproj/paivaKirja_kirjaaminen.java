@@ -39,16 +39,25 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
                 // Tässä testataan ensiksi että menikö arvot päiväkirjadataan tai ei, jos ei mennyt se palautta Catchin eli errorin.
                 try{
                     paivaKirjaData = new PaivaKirjaData(editTextOtsikko.getText().toString(),editTextKirje.getText().toString());
+
                     Toast.makeText(paivaKirja_kirjaaminen.this,"Tallennettu",Toast.LENGTH_SHORT).show();
+
                 }catch (Exception e){
                     Toast.makeText(paivaKirja_kirjaaminen.this,"Paivakirjan tekemine epäonnistui",Toast.LENGTH_SHORT).show();
+
                     paivaKirjaData = new PaivaKirjaData("ERROR","ERROR");
+
                 }
 
                 MekaDataBase mekaDataBase = new MekaDataBase(paivaKirja_kirjaaminen.this);
+
                 //Datan lähettäminen
                 boolean success = mekaDataBase.addOne(paivaKirjaData);
+
+                //Tulostaa toastin joka kertoo että arvot tallennettu databaseen.
                 Toast.makeText(paivaKirja_kirjaaminen.this,"SUCCESS= " + success,Toast.LENGTH_SHORT).show();
+
+                //Vie suoraan PaivaKirjaData_Displayer activitiin.
                 Intent intent = new Intent(paivaKirja_kirjaaminen.this, PaivaKirjaData_Displayer.class);
                 startActivity(intent);
 
