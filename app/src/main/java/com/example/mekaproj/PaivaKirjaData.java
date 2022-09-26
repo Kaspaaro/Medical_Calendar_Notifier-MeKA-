@@ -24,6 +24,7 @@ public class PaivaKirjaData {
 
     // Getterit ja Setterit!
     public Integer getID(){
+
         return id;
     }
     public String getOtsikko() {

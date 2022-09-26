@@ -61,8 +61,11 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
                 Intent intent = new Intent(paivaKirja_kirjaaminen.this, PaivaKirjaData_Displayer.class);
                 startActivity(intent);
 
+
             }
 
+
         });
+
     }
 }

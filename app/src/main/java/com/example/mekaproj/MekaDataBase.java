@@ -61,6 +61,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
         }
 
     }
+
     public boolean deleteOne(PaivaKirjaData paivaKirjaData){
         SQLiteDatabase db = getWritableDatabase();
         String queryString = "DELETE FROM " + PAIVAKIRJA_TABLE + " WHERE " + COLUMN_ID + " = " + paivaKirjaData.getID();
@@ -71,6 +72,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
             return false;
         }
     }
+
     //Geteverything methodi,palauttaa Kaiken databasesta.
     public List<PaivaKirjaData> getEverything() {
 
