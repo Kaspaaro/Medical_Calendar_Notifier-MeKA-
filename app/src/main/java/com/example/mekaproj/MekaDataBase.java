@@ -11,8 +11,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class MekaDataBase extends SQLiteOpenHelper{
-
-
+    static final String DB_NAME = "Paivakirja.db";
     public static final String PAIVAKIRJA_TABLE = "PAIVAKIRJA_TABLE";
     public static final String COLUMN_PAIVAKIRJA_OTSIKKO = "PAIVAKIRJA_OTSIKKO";
     public static final String COLUMN_PAIVAKIRJA_KIRJE = "PAIVAKIRJA_KIRJE";
@@ -20,7 +19,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
     public MekaDataBase(@Nullable Context context) {
 
-        super(context, "Paivakirja.db", null, 1);
+        super(context, DB_NAME, null, 1);
     }
 
     //Eka kerta databasea käytetään. Täälä pitäisi olla koodia joka luo uuden databasen.

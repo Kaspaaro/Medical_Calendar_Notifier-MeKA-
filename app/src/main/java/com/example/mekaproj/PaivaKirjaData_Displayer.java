@@ -38,10 +38,10 @@ public class PaivaKirjaData_Displayer extends AppCompatActivity {
         lv_Paivakirjadata.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+            public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
                 Intent intent = new Intent(PaivaKirjaData_Displayer.this, Paivakirja_view_delete.class);
-                intent.putExtra("Listviewclick",i);
+                intent.putExtra("Listviewclick",position);
 
                 startActivity(intent);
             }
