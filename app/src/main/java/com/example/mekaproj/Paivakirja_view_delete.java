@@ -10,6 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Paivakirja_view_delete extends AppCompatActivity {
@@ -26,11 +27,19 @@ public class Paivakirja_view_delete extends AppCompatActivity {
         tv_Paivakirjadatakirje = findViewById(R.id.viewKirje);
         tv_Paivakirjadataotsikko = findViewById(R.id.viewOtsikko);
 
-        Bundle recdData = getIntent().getExtras();
-        String myVal = recdData.getString("value");
-
-        TextView textView = (TextView)findViewById(R.id.viewOtsikko);
-        textView.setText(myVal);
+        /*Bundle recdData = getIntent().getExtras();
+        String myVal = recdData.getString("value");*/
+        MekaDataBase pkdata = new MekaDataBase(Paivakirja_view_delete.this);
+        List<PaivaKirjaData> arrayList = pkdata.getEverything();
+        Intent intent = getIntent();
+        String pos = intent.getStringExtra("POSITION");
+        int position = Integer.parseInt(pos);
+        PaivaKirjaData paivakirja = arrayList.get(position);
+        int id = paivakirja.getID();
+        String otsikko = paivakirja.getOtsikko();
+        String kirje = paivakirja.getKirje();
+        tv_Paivakirjadataotsikko.setText(otsikko);
+        tv_Paivakirjadatakirje.setText(kirje);
 
     }
 

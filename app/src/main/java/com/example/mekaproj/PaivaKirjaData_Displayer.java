@@ -31,7 +31,7 @@ public class PaivaKirjaData_Displayer extends AppCompatActivity {
         List<PaivaKirjaData> everything = mekaDataBase.getEverything();
 
         // Kirjoitaa arvot viewlistalle databasesta.
-        PaivakirjaArrayAdapter = new ArrayAdapter<>(PaivaKirjaData_Displayer.this, android.R.layout.simple_list_item_multiple_choice, everything);
+        PaivakirjaArrayAdapter = new ArrayAdapter<>(PaivaKirjaData_Displayer.this, android.R.layout.simple_list_item_1, everything);
 
         lv_Paivakirjadata.setAdapter(PaivakirjaArrayAdapter);
 
@@ -41,11 +41,11 @@ public class PaivaKirjaData_Displayer extends AppCompatActivity {
             //Lähettää tiedot luettavaksi "Paivakirja_view_delete"
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
-                Object obj = PaivakirjaArrayAdapter.getItem(position);
-                String value= obj.toString();
+                /*Object obj = PaivakirjaArrayAdapter.getItem(position);
+                String value= obj.toString();*/
 
                 Intent intent = new Intent(PaivaKirjaData_Displayer.this, Paivakirja_view_delete.class);
-                intent.putExtra("value",value);
+                intent.putExtra("POSITION",String.valueOf(position));
 
                 startActivity(intent);
 

@@ -16,9 +16,8 @@ public class PaivaKirjaData {
 
     //Tallenetut Rivit Viewlist Tostring.
     public String toString() {
-        return "Otsikko: " +
-                otsikko + '\n' +
-               "Teksti: " + kirje + '\n'
+        return "     " +
+                otsikko + '\n'
                 ;
     }
 
