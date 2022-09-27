@@ -49,15 +49,13 @@ public class MekaDataBase extends SQLiteOpenHelper{
         long insert = db.insert(PAIVAKIRJA_TABLE, null, cv);
 
         // Jos inserti on -1 palauttaa false jos se on jotain muuta se palautta true
-        if (insert == -1){
 
-            return false;
+        if (insert == -1)
+        {return false;}
 
-        }else{
+        else
 
-            return true;
-
-        }
+        { return true; }
 
     }
 
@@ -72,43 +70,6 @@ public class MekaDataBase extends SQLiteOpenHelper{
         }
     }
 
-    public List<PaivaKirjaData> getData(int positionid){
-
-        List<PaivaKirjaData> returnList = new ArrayList<>();
-        // Get data from database (ottaa dataa databasesta)
-
-        String queryString = "SELECT * FROM " + PAIVAKIRJA_TABLE + " WHERE " + COLUMN_ID + "=" + positionid;
-
-        SQLiteDatabase db = this.getReadableDatabase();
-
-        Cursor cursor = db.rawQuery(queryString, null);
-
-        if (cursor.moveToFirst()){
-            do {
-
-                Integer paivakirjaid = cursor.getInt(0);
-                String paivakirjaOtsikko = cursor.getString(1);
-
-                String paivakirjaKirje = cursor.getString(2);
-
-                PaivaKirjaData paivaKirjaData = new PaivaKirjaData(paivakirjaid,paivakirjaOtsikko,paivakirjaKirje);
-
-                returnList.add(paivaKirjaData);
-
-            }while (cursor.moveToNext());
-
-
-        }else {
-            //fail älä lisää mitään
-        }
-
-        // sulje db ja cursor kun on valmista
-        cursor.close();
-
-        db.close();
-
-        return returnList;
-    }
 
     //Geteverything methodi,palauttaa Kaiken databasesta.
     public List<PaivaKirjaData> getEverything() {
@@ -148,4 +109,5 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
         return returnList;
     }
+
 }

@@ -26,8 +26,11 @@ public class Paivakirja_view_delete extends AppCompatActivity {
         tv_Paivakirjadatakirje = findViewById(R.id.viewKirje);
         tv_Paivakirjadataotsikko = findViewById(R.id.viewOtsikko);
 
-        if(getIntent().hasExtra("Listviewclick")){
-        }
+        Bundle recdData = getIntent().getExtras();
+        String myVal = recdData.getString("value");
+
+        TextView textView = (TextView)findViewById(R.id.viewOtsikko);
+        textView.setText(myVal);
 
     }
 

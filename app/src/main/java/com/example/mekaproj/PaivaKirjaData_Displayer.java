@@ -38,12 +38,17 @@ public class PaivaKirjaData_Displayer extends AppCompatActivity {
         lv_Paivakirjadata.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
+            //Lähettää tiedot luettavaksi "Paivakirja_view_delete"
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
+                Object obj = PaivakirjaArrayAdapter.getItem(position);
+                String value= obj.toString();
+
                 Intent intent = new Intent(PaivaKirjaData_Displayer.this, Paivakirja_view_delete.class);
-                intent.putExtra("Listviewclick",position);
+                intent.putExtra("value",value);
 
                 startActivity(intent);
+
             }
         });
     }
