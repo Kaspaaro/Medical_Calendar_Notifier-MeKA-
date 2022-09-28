@@ -9,7 +9,7 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-
+/* @Kaspar Tullus*/
 public class MekaDataBase extends SQLiteOpenHelper{
     static final String DB_NAME = "Paivakirja.db";
     public static final String PAIVAKIRJA_TABLE = "PAIVAKIRJA_TABLE";

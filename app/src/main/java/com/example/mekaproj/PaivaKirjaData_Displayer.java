@@ -11,7 +11,7 @@ import android.widget.ListView;
 
 import java.util.List;
 
-
+/* @Kaspar Tullus*/
 public class PaivaKirjaData_Displayer extends AppCompatActivity {
 
     ///Refrenssit

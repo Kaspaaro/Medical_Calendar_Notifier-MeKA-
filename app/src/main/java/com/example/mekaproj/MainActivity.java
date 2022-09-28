@@ -5,7 +5,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
-
+/* Authors
+    @Kaspar Tullus
+    @Semen Morozov
+ */
 public class MainActivity extends AppCompatActivity {
 
 
