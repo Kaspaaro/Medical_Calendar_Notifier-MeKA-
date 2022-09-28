@@ -13,6 +13,13 @@
         android:theme="@style/Theme.MeKa"
         tools:targetApi="31">
         <activity
+            android:name=".calendar_memory_list"
+            android:exported="false">
+            <meta-data
+                android:name="android.app.lib_name"
+                android:value="" />
+        </activity>
+        <activity
             android:name=".Paivakirja_view_delete"
             android:exported="false">
             <meta-data
@@ -46,8 +53,8 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
-        <activity android:name="com.example.mekaproj.MekaMuistutus" />
-        <activity android:name="com.example.mekaproj.CalendarActivity" />
+        <activity android:name=".MekaMuistutus" />
+        <activity android:name=".CalendarActivity" />
     </application>
 
 </manifest>

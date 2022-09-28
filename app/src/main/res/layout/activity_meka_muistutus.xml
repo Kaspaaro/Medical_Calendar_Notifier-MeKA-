@@ -12,6 +12,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="24dp"
+        android:autofillHints=""
         android:ems="10"
         android:gravity="center"
         android:hint="@string/medicineName"
@@ -21,8 +22,34 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_time"
-        android:autofillHints="" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_time" />
+
+    <Button
+        android:id="@+id/btn_addToCalendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="308dp"
+        android:backgroundTint="@color/teal_700"
+        android:onClick="btn_addToCalendar"
+        android:text="Add to calendar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/editTextMedicine"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <Button
+        android:id="@+id/btn_time"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="72dp"
+        android:backgroundTint="@color/teal_700"
+        android:hint="@string/time"
+        android:text="Select a time"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.503"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/btn_date" />
 
     <TextView
         android:id="@+id/textView"
@@ -40,41 +67,29 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btn_addToCalendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="308dp"
-        android:backgroundTint="@color/teal_700"
-        android:onClick="btn_addToCalendar"
-        android:text="Add to calendar"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/editTextMedicine"
-        app:layout_constraintVertical_bias="1.0" />
-
-    <Button
         android:id="@+id/btn_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="32dp"
         android:backgroundTint="@color/teal_700"
         android:hint="@string/date"
-        android:text="Select a date"
+        android:text="Select a Start date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
     <Button
-        android:id="@+id/btn_time"
+        android:id="@+id/btn_date2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="20dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginBottom="16dp"
         android:backgroundTint="@color/teal_700"
-        android:hint="@string/time"
-        android:text="Select a time"
+        android:hint="@string/date"
+        android:text="Select a End date"
+        app:layout_constraintBottom_toTopOf="@+id/btn_time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_date" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>

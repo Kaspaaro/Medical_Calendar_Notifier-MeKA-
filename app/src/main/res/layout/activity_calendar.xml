@@ -8,14 +8,57 @@
     tools:context=".CalendarActivity">
 
 
-    <TextView
-        android:id="@+id/dateTXT"
+    <Button
+        android:id="@+id/btn_check_calendar"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="68dp"
+        android:layout_marginBottom="128dp"
+        android:backgroundTint="@color/teal_700"
+        android:hint="@string/time"
+        android:onClick="btn_calendar_Check"
+        android:text="Check in Calendar"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.072"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/timeTxt"
+        app:layout_constraintVertical_bias="0.546" />
+
+    <Button
+        android:id="@+id/btn_delete_calendar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="128dp"
+        android:backgroundTint="@color/teal_700"
+        android:hint="@string/time"
+        android:onClick="btn_calendar_Delete"
+        android:text="DELETE"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.813"
+        app:layout_constraintStart_toEndOf="@+id/btn_check_calendar"
+        app:layout_constraintTop_toBottomOf="@+id/timeTxt"
+        app:layout_constraintVertical_bias="0.546" />
+
+    <TextView
+        android:id="@+id/startDateTXT"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.501"
+        app:layout_constraintHorizontal_bias="0.337"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/endDateTXT2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="64dp"
+        android:text="TextView"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.665"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
@@ -23,10 +66,10 @@
         android:id="@+id/timeTxt"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="52dp"
         android:text="TextView"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.501"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateTXT" />
+        app:layout_constraintTop_toBottomOf="@+id/startDateTXT" />
 </androidx.constraintlayout.widget.ConstraintLayout>
