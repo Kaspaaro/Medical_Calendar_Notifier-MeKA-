@@ -137,7 +137,7 @@ public class MekaMuistutus extends AppCompatActivity {
     //send data to the Calendar activity page
     public void btn_addToCalendar(View v) {
 
-        ///Päivä kirjan datan kirjaaminen
+        ///Muistutus datan kirjaaminen
         MuistutusData muistutusData;
 
         try{
