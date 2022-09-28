@@ -24,7 +24,7 @@ public class MainActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void muistutus_btn (View view) {
+    public void muistutus_btn (View view){
         Intent intent = new Intent(this, MekaMuistutus.class);
         startActivity(intent);
     }

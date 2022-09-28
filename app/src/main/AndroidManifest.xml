@@ -46,6 +46,8 @@
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
+        <activity android:name="com.example.mekaproj.MekaMuistutus" />
+        <activity android:name="com.example.mekaproj.CalendarActivity" />
     </application>
 
 </manifest>
