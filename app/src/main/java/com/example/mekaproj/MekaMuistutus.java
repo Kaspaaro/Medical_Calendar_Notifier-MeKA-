@@ -85,7 +85,7 @@ public class MekaMuistutus extends AppCompatActivity {
             public void onDateSet(DatePicker view, int year, int month, int data) {
                 String days = Integer.toString(data);
                 String months = Integer.toString(month);
-                String years = Integer.toString(data);
+                String years = Integer.toString(year);
                 setStartingdate = days + "/" + months + "/" + years;
             }
         },year, month, date);
@@ -101,9 +101,10 @@ public class MekaMuistutus extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int data) {
+
                 String daye = Integer.toString(data);
                 String monthe = Integer.toString(month);
-                String yeare = Integer.toString(data);
+                String yeare = Integer.toString(year);
                 setEndingdate = daye + "/" + monthe + "/" + yeare;
             }
         },year, month, date);
