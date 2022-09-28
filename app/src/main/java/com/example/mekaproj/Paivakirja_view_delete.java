@@ -6,7 +6,9 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 import android.widget.TextView;
 
@@ -15,9 +17,12 @@ import java.util.List;
 
 public class Paivakirja_view_delete extends AppCompatActivity {
     private static final String TAG = "Paivakirja_view_delete";
-    private TextView tv_Paivakirjadatakirje;
-    private TextView tv_Paivakirjadataotsikko;
+    private TextView tv_Paivakirjadatakirje;  //Kirje Textview osio mihin on kirjoitettu tarina
+    private TextView tv_Paivakirjadataotsikko; //Tarinan Otsikko
     ArrayAdapter PaivakirjaArrayAdapter;
+    private int checker = 0;
+    private PaivaKirjaData getpk;
+    private MekaDataBase getdb;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -27,8 +32,6 @@ public class Paivakirja_view_delete extends AppCompatActivity {
         tv_Paivakirjadatakirje = findViewById(R.id.viewKirje);
         tv_Paivakirjadataotsikko = findViewById(R.id.viewOtsikko);
 
-        /*Bundle recdData = getIntent().getExtras();
-        String myVal = recdData.getString("value");*/
         MekaDataBase pkdata = new MekaDataBase(Paivakirja_view_delete.this);
         List<PaivaKirjaData> arrayList = pkdata.getEverything();
         Intent intent = getIntent();
@@ -40,11 +43,12 @@ public class Paivakirja_view_delete extends AppCompatActivity {
         String kirje = paivakirja.getKirje();
         tv_Paivakirjadataotsikko.setText(otsikko);
         tv_Paivakirjadatakirje.setText(kirje);
-
+        getpk = paivakirja;
+        getdb = pkdata;
     }
-
-    public void btn_Delete_View(View view) {
-        Intent intent = new Intent(this, PaivaKirjaData_Displayer.class);
+    public void btn_Delete_View (View view){
+        getdb.deleteOne(getpk);
+        Intent intent = new Intent(Paivakirja_view_delete.this, PaivaKirjaData_Displayer.class);
         startActivity(intent);
     }
 }

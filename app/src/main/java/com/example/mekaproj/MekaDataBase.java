@@ -59,7 +59,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
     }
 
-    public boolean deleteOne(PaivaKirjaData paivaKirjaData){
+    public boolean deleteOne (PaivaKirjaData paivaKirjaData){
         SQLiteDatabase db = getWritableDatabase();
         String queryString = "DELETE FROM " + PAIVAKIRJA_TABLE + " WHERE " + COLUMN_ID + " = " + paivaKirjaData.getID();
         Cursor cursor = db.rawQuery(queryString, null);
