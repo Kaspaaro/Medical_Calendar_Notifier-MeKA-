@@ -48,7 +48,7 @@ public class Paivakirja_view_delete extends AppCompatActivity {
     }
     public void btn_Delete_View (View view){
         getdb.deleteOne(getpk);
-        Intent intent = new Intent(Paivakirja_view_delete.this, PaivaKirjaData_Displayer.class);
+        Intent intent = new Intent(Paivakirja_view_delete.this, MainActivity.class);
         startActivity(intent);
     }
 }

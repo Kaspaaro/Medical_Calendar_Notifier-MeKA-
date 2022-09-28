@@ -52,7 +52,7 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
                 MekaDataBase mekaDataBase = new MekaDataBase(paivaKirja_kirjaaminen.this);
 
                 //Datan lähettäminen
-                boolean success = mekaDataBase.addOne(paivaKirjaData);
+                boolean success = mekaDataBase.addOnePK(paivaKirjaData);
 
                 //Tulostaa toastin joka kertoo että arvot tallennettu databaseen.
                 Toast.makeText(paivaKirja_kirjaaminen.this,"SUCCESS= " + success,Toast.LENGTH_SHORT).show();

@@ -55,8 +55,31 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
     }
 
+    public boolean addOneMUIS (PaivaKirjaData paivaKirjaData){
 
-    public boolean addOne (PaivaKirjaData paivaKirjaData){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues cv = new ContentValues();
+
+        cv.put(COLUMN_PAIVAKIRJA_OTSIKKO,paivaKirjaData.getOtsikko()); // Tässä kirjoitetaan column_paivakirjaan otsikko joka saadaan getOtsikko methodilla paivakirjadatasta
+        cv.put(COLUMN_PAIVAKIRJA_KIRJE,paivaKirjaData.getKirje()); // Tässä kirjoitetaan column_paivakirjaan kirje joka saadaan getKirje methodilla paivakirjadatasta
+
+        long insert = db.insert(PAIVAKIRJA_TABLE, null, cv);
+
+        // if insert is -1 it returns a false if its something else it returns true.
+
+        if (insert == -1)
+        {return false;}
+
+        else
+
+        { return true; }
+
+    }
+
+
+
+    // Adds written data into the database
+    public boolean addOnePK(PaivaKirjaData paivaKirjaData){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
