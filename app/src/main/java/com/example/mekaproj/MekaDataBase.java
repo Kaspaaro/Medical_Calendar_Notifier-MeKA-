@@ -13,7 +13,7 @@ import java.util.List;
 public class MekaDataBase extends SQLiteOpenHelper{
 
     // Paivakirja database finals
-    static final String DB_NAME = "Paivakirja.db"; // NAME OF DataBase FILE
+    static final String DB_NAME = "DATABASE.db"; // NAME OF DataBase FILE
     public static final String PAIVAKIRJA_TABLE = "PAIVAKIRJA_TABLE"; // DATABASE TABLE (WHERE COLUMNS GO INTO)
     public static final String COLUMN_PAIVAKIRJA_OTSIKKO = "PAIVAKIRJA_OTSIKKO"; // TITLE FOR PAIVAKIRJA
     public static final String COLUMN_PAIVAKIRJA_KIRJE = "PAIVAKIRJA_KIRJE"; // TEXT/STORY FOR PAIVAKIRJA
@@ -21,11 +21,11 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
     // Muistutus database finals
 
-    static final String MUISTUTUS_DB_NAME = "Muistutus.db"; // NAME OF DataBase FILE
     public static final String MUISTUTUS_TABLE = "MUISTUTUS_TABLE"; // DATABASE TABLE (WHERE COLUMNS GO INTO)
     public static final String COLUMN_MUISTUTUS_SPAIVA = "MUISTUTUS_SPAIVA"; // START DAY
     public static final String COLUMN_MUISTUTUS_EPAIVA = "MUISTUTUS_EPAIVA"; // END DAY
     public static final String COLUMN_MUISTUTUS_AIKA = "MUISTUTUS_AIKA"; // TIME
+    public static final String COLUMN_MUISTUTUS_NIMI = "MUISTUTUS_NIMI"; // NAME
     public static final String COLUMN_ID_MUISTUTUS = "ID"; //COLUMN ID
 
 /////////////////////////////////////////////////////////////////////////////
@@ -41,7 +41,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Creates values and database with sql code. for MUISTUTUS
-        String createTableStatementMuistutus = "CREATE TABLE " + MUISTUTUS_TABLE + " (" + COLUMN_ID_MUISTUTUS + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MUISTUTUS_SPAIVA + " DATE," + COLUMN_MUISTUTUS_EPAIVA + " DATE," + COLUMN_MUISTUTUS_AIKA + " TIME)";
+        String createTableStatementMuistutus = "CREATE TABLE " + MUISTUTUS_TABLE + " (" + COLUMN_ID_MUISTUTUS + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MUISTUTUS_SPAIVA + " DATE," + COLUMN_MUISTUTUS_EPAIVA + " DATE," + COLUMN_MUISTUTUS_AIKA + " TIME," + COLUMN_MUISTUTUS_NIMI + " TEXT)";
         db.execSQL(createTableStatementMuistutus);
 
         // Creates values and database with sql code. for PAIVAKIRJA

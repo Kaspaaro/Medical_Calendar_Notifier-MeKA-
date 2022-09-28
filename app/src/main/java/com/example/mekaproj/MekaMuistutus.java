@@ -9,40 +9,54 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.provider.CalendarContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
 import java.util.Calendar;
-import android.widget.TextView;
-import java.util.Calendar;
-/* @Semen Morozov*/
+
+/* @Semen Morozov
+* @Kaspar Tullus*/
 public class MekaMuistutus extends AppCompatActivity {
     private static final String TAG = "MekaMuistutus";
 
-    Button btnDate, btnTime;
-
+    Button btnSDate,btnEDate, btnTime;
+    EditText medicineNAME;
+    private String setEndingdate;
+    private String setStartingdate;
+    private String settime;
     // buttons activation
 
     @Override
-
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meka_muistutus);
-        btnDate=(Button) findViewById(R.id.btn_date);
+
+        //Buttons findbyid on activity
+        btnSDate =(Button) findViewById(R.id.btn_date);
+        btnEDate =(Button) findViewById(R.id.btn_date2);
         btnTime=(Button) findViewById(R.id.btn_time);
+        medicineNAME = (EditText) findViewById(R.id.editTextMedicine);
 
 
-        btnDate.setOnClickListener(new View.OnClickListener() {
+
+        btnSDate.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 setDate();
             }
         });
 
+        btnEDate.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                setDate2();
+            }
+        });
         btnTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +77,22 @@ public class MekaMuistutus extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int data) {
+                setStartingdate = data + "/" + month + "/" + year;
+            }
+        },year, month, date);
+        datePickerDialog.show();
+    }
 
+    private void setDate2() {
+        Calendar calendar = Calendar.getInstance();
+        int year = calendar.get(Calendar.YEAR);
+        int month = calendar.get(Calendar.MONTH);
+        int date = calendar.get(Calendar.DATE);
+
+        DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
+            @Override
+            public void onDateSet(DatePicker view, int year, int month, int data) {
+                setEndingdate = data + "/" + month + "/" + year;
             }
         },year, month, date);
         datePickerDialog.show();
@@ -84,6 +113,7 @@ public class MekaMuistutus extends AppCompatActivity {
                 Calendar calendar1 = Calendar.getInstance();
                 calendar1.set(Calendar.HOUR,hour);
                 calendar1.set(Calendar.MINUTE,min);
+                settime = hour+":"+ min;
 
             }
         }, hour, min, is24HoursView);
@@ -93,6 +123,23 @@ public class MekaMuistutus extends AppCompatActivity {
 
     //send data to the Calendar activity page
     public void btn_addToCalendar(View v) {
+
+        ///Päivä kirjan datan kirjaaminen
+        MuistutusData muistutusData;
+
+        try{
+            muistutusData = new MuistutusData(-1,medicineNAME.getText().toString(),setStartingdate,setEndingdate,settime);
+
+            Toast.makeText(MekaMuistutus.this,"Lisätty",Toast.LENGTH_SHORT).show();
+
+        }catch (Exception e){
+            Toast.makeText(MekaMuistutus.this,"Muistutuksen tekemine epäonnistui",Toast.LENGTH_SHORT).show();
+
+            muistutusData = new MuistutusData(0,"ERROR","ERROR","ERROR","ERROR");
+
+        }
+        MekaDataBase mekaDataBase = new MekaDataBase(MekaMuistutus.this);
+
         Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);
     }
