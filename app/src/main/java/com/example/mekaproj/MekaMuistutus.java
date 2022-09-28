@@ -147,7 +147,7 @@ public class MekaMuistutus extends AppCompatActivity {
         }
         MekaDataBase mekaDataBase = new MekaDataBase(MekaMuistutus.this);
         boolean success = mekaDataBase.addOneMUIS(muistutusData);
-        Intent intent = new Intent(this, CalendarActivity_View.class);
+        Intent intent = new Intent(this, Calendar_memory_list.class);
         startActivity(intent);
     }
 

@@ -41,7 +41,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Creates values and database with sql code. for MUISTUTUS
-        String createTableStatementMuistutus = "CREATE TABLE " + MUISTUTUS_TABLE + " (" + COLUMN_ID_MUISTUTUS + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MUISTUTUS_SPAIVA + " DATE," + COLUMN_MUISTUTUS_EPAIVA + " DATE," + COLUMN_MUISTUTUS_AIKA + " TIME," + COLUMN_MUISTUTUS_NIMI + " TEXT)";
+        String createTableStatementMuistutus = "CREATE TABLE " + MUISTUTUS_TABLE + " (" + COLUMN_ID_MUISTUTUS + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MUISTUTUS_NIMI + " TEXT," + COLUMN_MUISTUTUS_SPAIVA + " DATE," + COLUMN_MUISTUTUS_EPAIVA + " DATE," + COLUMN_MUISTUTUS_AIKA + " TIME)";
         db.execSQL(createTableStatementMuistutus);
 
         // Creates values and database with sql code. for PAIVAKIRJA
@@ -152,6 +152,46 @@ public class MekaDataBase extends SQLiteOpenHelper{
         db.close();
 
         return returnList;
+    }
+
+    public List<MuistutusData> getMuitsAll() {
+
+        List<MuistutusData> returnListm = new ArrayList<>();
+
+        // Get data from database
+        String queryString = "SELECT * FROM " + MUISTUTUS_TABLE;
+
+        SQLiteDatabase db = this.getReadableDatabase();
+
+        Cursor cursor = db.rawQuery(queryString, null);
+
+        if (cursor.moveToFirst()){
+            do {
+
+                Integer muistutusId = cursor.getInt(0);
+                String medicineName = cursor.getString(1);
+
+                String sDate = cursor.getString(2);
+                String eDate = cursor.getString(3);
+                String mtime = cursor.getString(4);
+
+                MuistutusData muistutusData = new MuistutusData(muistutusId,medicineName,sDate,eDate,mtime);
+
+                returnListm.add(muistutusData);
+
+            }while (cursor.moveToNext());
+
+
+        }else {
+            //fail dont add anything
+        }
+
+        // close the database and cursor. then return everything from the database.
+        cursor.close();
+
+        db.close();
+
+        return returnListm;
     }
 
 }

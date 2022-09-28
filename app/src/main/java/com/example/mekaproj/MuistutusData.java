@@ -18,13 +18,11 @@ public class MuistutusData {
 
     @Override
     public String toString() {
-        return "MuistutusData{" +
-                "medName='" + medName + '\n' +
-                ", startDate='" + startDate + '\n' +
-                ", endDate='" + endDate + '\n' +
-                ", time='" + time + '\n' +
-                ", id=" + id +
-                '}';
+        return
+                "Medicine: " + medName + '\n' +
+                "Start: " + startDate + '\n' +
+                "Untill: " + endDate + '\n' +
+                "Time: " + time + '\n' ;
     }
 
     public int getIdM() {

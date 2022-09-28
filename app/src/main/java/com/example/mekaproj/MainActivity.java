@@ -31,7 +31,10 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, MekaMuistutus.class);
         startActivity(intent);
     }
-
+    public void btn_poistaMuistutus (View view){
+        Intent intent = new Intent(this, Calendar_memory_list.class);
+        startActivity(intent);
+    }
 
 
 }
