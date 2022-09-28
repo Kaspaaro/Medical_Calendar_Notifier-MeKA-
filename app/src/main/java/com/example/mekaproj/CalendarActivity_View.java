@@ -5,7 +5,7 @@ import android.widget.TextView;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-public class CalendarActivity extends AppCompatActivity {
+public class CalendarActivity_View extends AppCompatActivity {
     private TextView date, time;
 
 

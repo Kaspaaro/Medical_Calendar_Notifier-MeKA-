@@ -28,12 +28,6 @@ public class MekaMuistutus extends AppCompatActivity {
     private String setEndingdate;
     private String setStartingdate;
     private String settime;
-    private String daye;
-   private String monthe;
-   private String yeare;
-    private String days;
-    private String months;
-    private String years;
     // buttons activation
 
     @Override
@@ -153,7 +147,7 @@ public class MekaMuistutus extends AppCompatActivity {
         }
         MekaDataBase mekaDataBase = new MekaDataBase(MekaMuistutus.this);
         boolean success = mekaDataBase.addOneMUIS(muistutusData);
-        Intent intent = new Intent(this, CalendarActivity.class);
+        Intent intent = new Intent(this, CalendarActivity_View.class);
         startActivity(intent);
     }
 

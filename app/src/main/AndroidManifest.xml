@@ -54,7 +54,7 @@
                 android:value="" />
         </activity>
         <activity android:name=".MekaMuistutus" />
-        <activity android:name=".CalendarActivity" />
+        <activity android:name=".CalendarActivity_View" />
     </application>
 
 </manifest>
