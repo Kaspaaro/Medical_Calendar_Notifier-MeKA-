@@ -4,4 +4,7 @@
     <string name="Meka">MeKa</string>
     <string name="MeKaDESC">Medical Kalenteri</string>
     <string name="Delete">DELETE</string>
+    <string name="medicineName">Enter a medicine name</string>
+    <string name="date">enter a date</string>
+    <string name="time">enter a time</string>
 </resources>

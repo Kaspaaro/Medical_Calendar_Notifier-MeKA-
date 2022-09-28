@@ -10,12 +10,13 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="79dp"
-        android:layout_height="33dp"
-        android:text="@string/Meka"
+        android:layout_width="147dp"
+        android:layout_height="147dp"
+        android:background="@drawable/logoremove"
         android:textAlignment="center"
         android:textSize="24sp"
         android:textStyle="bold"
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -50,22 +51,12 @@
         android:orientation="vertical"
         app:layout_constraintGuide_begin="380dp" />
 
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/MeKaDESC"
-        android:textSize="10sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView2"
-        app:layout_constraintHorizontal_bias="0.504"
-        app:layout_constraintStart_toStartOf="@+id/textView2"
-        app:layout_constraintTop_toBottomOf="@+id/textView2" />
-
     <Button
         android:id="@+id/button"
         android:layout_width="250dp"
         android:layout_height="44dp"
-        android:onClick="muistutusbtn"
+        android:backgroundTint="@color/teal_700"
+        android:onClick="muistutus_btn"
         android:text="Lisää muistutus"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="@+id/textView2"
@@ -80,6 +71,7 @@
         android:layout_height="44dp"
         android:onClick="poistaMuistutus"
         android:text="Poista Muistutus"
+        android:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.0"
@@ -93,6 +85,7 @@
         android:layout_height="44dp"
         android:onClick="paivakirjabtn"
         android:text="Kirjoita päiväkirja"
+        android:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="@+id/button"
         app:layout_constraintHorizontal_bias="0.0"
@@ -106,6 +99,7 @@
         android:layout_height="44dp"
         android:onClick="btn_paivakirjadata"
         android:text="Päiväkirjat"
+        android:backgroundTint="@color/teal_700"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
         app:layout_constraintEnd_toEndOf="@+id/button3"
         app:layout_constraintHorizontal_bias="0.0"

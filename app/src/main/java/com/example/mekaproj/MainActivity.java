@@ -23,4 +23,12 @@ public class MainActivity extends AppCompatActivity {
         Intent intent = new Intent(this, PaivaKirjaData_Displayer.class);
         startActivity(intent);
     }
+
+    public void muistutus_btn (View view) {
+        Intent intent = new Intent(this, MekaMuistutus.class);
+        startActivity(intent);
+    }
+
+
+
 }
