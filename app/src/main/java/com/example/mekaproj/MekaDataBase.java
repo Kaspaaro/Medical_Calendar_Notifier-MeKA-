@@ -11,27 +11,45 @@ import java.util.ArrayList;
 import java.util.List;
 /* @Kaspar Tullus*/
 public class MekaDataBase extends SQLiteOpenHelper{
-    static final String DB_NAME = "Paivakirja.db";
-    public static final String PAIVAKIRJA_TABLE = "PAIVAKIRJA_TABLE";
-    public static final String COLUMN_PAIVAKIRJA_OTSIKKO = "PAIVAKIRJA_OTSIKKO";
-    public static final String COLUMN_PAIVAKIRJA_KIRJE = "PAIVAKIRJA_KIRJE";
-    public static final String COLUMN_ID = "ID";
+
+    // Paivakirja database finals
+    static final String DB_NAME = "Paivakirja.db"; // NAME OF DataBase FILE
+    public static final String PAIVAKIRJA_TABLE = "PAIVAKIRJA_TABLE"; // DATABASE TABLE (WHERE COLUMNS GO INTO)
+    public static final String COLUMN_PAIVAKIRJA_OTSIKKO = "PAIVAKIRJA_OTSIKKO"; // TITLE FOR PAIVAKIRJA
+    public static final String COLUMN_PAIVAKIRJA_KIRJE = "PAIVAKIRJA_KIRJE"; // TEXT/STORY FOR PAIVAKIRJA
+    public static final String COLUMN_ID = "ID"; //COLUMN ID
+
+    // Muistutus database finals
+
+    static final String MUISTUTUS_DB_NAME = "Muistutus.db"; // NAME OF DataBase FILE
+    public static final String MUISTUTUS_TABLE = "MUISTUTUS_TABLE"; // DATABASE TABLE (WHERE COLUMNS GO INTO)
+    public static final String COLUMN_MUISTUTUS_SPAIVA = "MUISTUTUS_SPAIVA"; // START DAY
+    public static final String COLUMN_MUISTUTUS_EPAIVA = "MUISTUTUS_EPAIVA"; // END DAY
+    public static final String COLUMN_MUISTUTUS_AIKA = "MUISTUTUS_AIKA"; // TIME
+    public static final String COLUMN_ID_MUISTUTUS = "ID"; //COLUMN ID
+
+/////////////////////////////////////////////////////////////////////////////
+
 
     public MekaDataBase(@Nullable Context context) {
 
         super(context, DB_NAME, null, 1);
     }
 
-    //Eka kerta databasea käytetään. Täälä pitäisi olla koodia joka luo uuden databasen.
+    //First time Muistutus database is created.
+    //First time paivakirja database is created.
     @Override
     public void onCreate(SQLiteDatabase db) {
+        // Creates values and database with sql code. for MUISTUTUS
+        String createTableStatementMuistutus = "CREATE TABLE " + MUISTUTUS_TABLE + " (" + COLUMN_ID_MUISTUTUS + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MUISTUTUS_SPAIVA + " DATE," + COLUMN_MUISTUTUS_EPAIVA + " DATE," + COLUMN_MUISTUTUS_AIKA + " TIME)";
+        db.execSQL(createTableStatementMuistutus);
 
-        // Luo databaselle arvot SQL koodia käyttäen.
-        String createTableStatement = "CREATE TABLE " + PAIVAKIRJA_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PAIVAKIRJA_OTSIKKO + " TEXT," + COLUMN_PAIVAKIRJA_KIRJE + " TEXT)";
-        db.execSQL(createTableStatement);
+        // Creates values and database with sql code. for PAIVAKIRJA
+        String createTableStatementPaivakirja = "CREATE TABLE " + PAIVAKIRJA_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PAIVAKIRJA_OTSIKKO + " TEXT," + COLUMN_PAIVAKIRJA_KIRJE + " TEXT)";
+        db.execSQL(createTableStatementPaivakirja);
     }
 
-    //tämä kutsutaan jos databasen versio numero muutuu. se estää vanhojen käyttäjien sovelluksen crashaamisen jos databasea muutetaan/päivitetään!
+    //this is called if the database version is updated so old users dont lose data.
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
 
@@ -48,7 +66,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
         long insert = db.insert(PAIVAKIRJA_TABLE, null, cv);
 
-        // Jos inserti on -1 palauttaa false jos se on jotain muuta se palautta true
+        // if insert is -1 it returns a false if its something else it returns true.
 
         if (insert == -1)
         {return false;}
@@ -59,6 +77,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
     }
 
+    //Deletes an data that was selected by a user.
     public boolean deleteOne (PaivaKirjaData paivaKirjaData){
         SQLiteDatabase db = getWritableDatabase();
         String queryString = "DELETE FROM " + PAIVAKIRJA_TABLE + " WHERE " + COLUMN_ID + " = " + paivaKirjaData.getID();
@@ -71,12 +90,12 @@ public class MekaDataBase extends SQLiteOpenHelper{
     }
 
 
-    //Geteverything methodi,palauttaa Kaiken databasesta.
+    //Geteverything returns everything from the database.
     public List<PaivaKirjaData> getEverything() {
 
         List<PaivaKirjaData> returnList = new ArrayList<>();
-        // Get data from database (ottaa dataa databasesta)
 
+        // Get data from database
         String queryString = "SELECT * FROM " + PAIVAKIRJA_TABLE;
 
         SQLiteDatabase db = this.getReadableDatabase();
@@ -99,10 +118,10 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
 
         }else {
-            //fail älä lisää mitään
+            //fail dont add anything
         }
 
-        // sulje db ja cursor kun on valmista
+        // close the database and cursor. then return everything from the database.
         cursor.close();
 
         db.close();

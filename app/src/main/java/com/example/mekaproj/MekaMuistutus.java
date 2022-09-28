@@ -26,7 +26,9 @@ public class MekaMuistutus extends AppCompatActivity {
     Button btnDate, btnTime;
 
     // buttons activation
+
     @Override
+
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meka_muistutus);
@@ -49,6 +51,7 @@ public class MekaMuistutus extends AppCompatActivity {
         });
 
     }
+
     //pick Date value
 
     private void setDate() {
