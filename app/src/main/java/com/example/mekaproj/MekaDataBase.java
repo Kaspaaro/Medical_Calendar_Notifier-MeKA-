@@ -55,15 +55,17 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
     }
 
-    public boolean addOneMUIS (PaivaKirjaData paivaKirjaData){
+    public boolean addOneMUIS (MuistutusData muistutusData){
 
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_PAIVAKIRJA_OTSIKKO,paivaKirjaData.getOtsikko()); // Tässä kirjoitetaan column_paivakirjaan otsikko joka saadaan getOtsikko methodilla paivakirjadatasta
-        cv.put(COLUMN_PAIVAKIRJA_KIRJE,paivaKirjaData.getKirje()); // Tässä kirjoitetaan column_paivakirjaan kirje joka saadaan getKirje methodilla paivakirjadatasta
+        cv.put(COLUMN_MUISTUTUS_SPAIVA,muistutusData.getStartDate());
+        cv.put(COLUMN_MUISTUTUS_EPAIVA,muistutusData.getEndDate());
+        cv.put(COLUMN_MUISTUTUS_AIKA,muistutusData.getTime());
+        cv.put(COLUMN_MUISTUTUS_NIMI,muistutusData.getMedName());
 
-        long insert = db.insert(PAIVAKIRJA_TABLE, null, cv);
+        long insert = db.insert(MUISTUTUS_TABLE, null, cv);
 
         // if insert is -1 it returns a false if its something else it returns true.
 
@@ -84,8 +86,8 @@ public class MekaDataBase extends SQLiteOpenHelper{
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues cv = new ContentValues();
 
-        cv.put(COLUMN_PAIVAKIRJA_OTSIKKO,paivaKirjaData.getOtsikko()); // Tässä kirjoitetaan column_paivakirjaan otsikko joka saadaan getOtsikko methodilla paivakirjadatasta
-        cv.put(COLUMN_PAIVAKIRJA_KIRJE,paivaKirjaData.getKirje()); // Tässä kirjoitetaan column_paivakirjaan kirje joka saadaan getKirje methodilla paivakirjadatasta
+        cv.put(COLUMN_PAIVAKIRJA_OTSIKKO,paivaKirjaData.getOtsikko()); // Here were writing column_paivakirjaOtsikko that we will get with getOtsikko from paivakirjadata
+        cv.put(COLUMN_PAIVAKIRJA_KIRJE,paivaKirjaData.getKirje()); // Here were writing column_paivakirjaKirje that we will get with getKirje from paivakirjadata
 
         long insert = db.insert(PAIVAKIRJA_TABLE, null, cv);
 

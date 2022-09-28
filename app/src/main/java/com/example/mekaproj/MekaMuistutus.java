@@ -28,6 +28,12 @@ public class MekaMuistutus extends AppCompatActivity {
     private String setEndingdate;
     private String setStartingdate;
     private String settime;
+    private String daye;
+   private String monthe;
+   private String yeare;
+    private String days;
+    private String months;
+    private String years;
     // buttons activation
 
     @Override
@@ -77,7 +83,10 @@ public class MekaMuistutus extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int data) {
-                setStartingdate = data + "/" + month + "/" + year;
+                String days = Integer.toString(data);
+                String months = Integer.toString(month);
+                String years = Integer.toString(data);
+                setStartingdate = days + "/" + months + "/" + years;
             }
         },year, month, date);
         datePickerDialog.show();
@@ -92,7 +101,10 @@ public class MekaMuistutus extends AppCompatActivity {
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
             @Override
             public void onDateSet(DatePicker view, int year, int month, int data) {
-                setEndingdate = data + "/" + month + "/" + year;
+                String daye = Integer.toString(data);
+                String monthe = Integer.toString(month);
+                String yeare = Integer.toString(data);
+                setEndingdate = daye + "/" + monthe + "/" + yeare;
             }
         },year, month, date);
         datePickerDialog.show();
@@ -139,7 +151,7 @@ public class MekaMuistutus extends AppCompatActivity {
 
         }
         MekaDataBase mekaDataBase = new MekaDataBase(MekaMuistutus.this);
-
+        boolean success = mekaDataBase.addOneMUIS(muistutusData);
         Intent intent = new Intent(this, CalendarActivity.class);
         startActivity(intent);
     }
