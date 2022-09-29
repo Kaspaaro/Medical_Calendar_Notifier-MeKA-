@@ -9,7 +9,10 @@ import androidx.annotation.Nullable;
 
 import java.util.ArrayList;
 import java.util.List;
-/* @Kaspar Tullus*/
+/**
+ *
+ * @author Kaspar Tullus
+ */
 public class MekaDataBase extends SQLiteOpenHelper{
 
     // Paivakirja database finals

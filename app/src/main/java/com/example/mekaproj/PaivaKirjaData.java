@@ -1,5 +1,9 @@
 package com.example.mekaproj;
-/* @Kaspar Tullus*/
+/**
+ *
+ * @author Kaspar Tullus
+ *
+ */
 public class PaivaKirjaData {
     private int id;
     private String otsikko;

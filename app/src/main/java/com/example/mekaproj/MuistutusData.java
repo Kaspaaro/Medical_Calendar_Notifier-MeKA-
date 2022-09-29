@@ -1,5 +1,8 @@
 package com.example.mekaproj;
-/* @Kaspar Tullus*/
+/**
+ *
+ * @author Kaspar Tullus
+ */
 
 public class MuistutusData {
     private String medName;

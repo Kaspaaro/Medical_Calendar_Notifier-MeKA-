@@ -19,8 +19,11 @@ import android.widget.Toast;
 import java.text.DateFormat;
 import java.util.Calendar;
 
-/* @Semen Morozov
-* @Kaspar Tullus*/
+/**
+ *
+ * @author Kaspar Tullus
+ * @author Semen Morozov
+ */
 public class MekaMuistutus extends AppCompatActivity {
     private static final String TAG = "MekaMuistutus";
 

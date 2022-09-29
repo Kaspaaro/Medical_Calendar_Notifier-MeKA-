@@ -11,7 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.List;
 
-/* @Kaspar Tullus*/
+/**
+ *
+ * @author Kaspar Tullus
+ */
+
 public class CalendarActivity_View extends AppCompatActivity {
     private TextView date, time;
     private TextView tv_MuistutusSPAIVA;

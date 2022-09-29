@@ -14,7 +14,11 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 import java.util.List;
-/* @Kaspar Tullus*/
+/**
+ *
+ * @author Kaspar Tullus
+ *
+ */
 public class Paivakirja_view_delete extends AppCompatActivity {
     private static final String TAG = "Paivakirja_view_delete";
     private TextView tv_Paivakirjadatakirje;  //Kirje Textview osio mihin on kirjoitettu tarina

@@ -10,7 +10,10 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import java.util.List;
-
+/**
+ *
+ * @author Kaspar Tullus
+ */
 public class paivaKirja_kirjaaminen extends AppCompatActivity {
 
     //Nappi refrensit ja muut layoutin controls
@@ -55,7 +58,7 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
                 boolean success = mekaDataBase.addOnePK(paivaKirjaData);
 
                 //Tulostaa toastin joka kertoo että arvot tallennettu databaseen.
-                Toast.makeText(paivaKirja_kirjaaminen.this,"SUCCESS= " + success,Toast.LENGTH_SHORT).show();
+                Toast.makeText(paivaKirja_kirjaaminen.this,"Tallenettu",Toast.LENGTH_SHORT).show();
 
                 //Vie suoraan PaivaKirjaData_Displayer activitiin.
                 Intent intent = new Intent(paivaKirja_kirjaaminen.this, PaivaKirjaData_Displayer.class);

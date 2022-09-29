@@ -8,9 +8,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-/* Authors
-    @Kaspar Tullus
-    @Semen Morozov
+/**
+ *
+ * @author Kaspar Tullus
+ * @author Semen Morozov
  */
 public class MainActivity extends AppCompatActivity {
 
