@@ -26,7 +26,6 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
     public static final String MUISTUTUS_TABLE = "MUISTUTUS_TABLE"; // DATABASE TABLE (WHERE COLUMNS GO INTO)
     public static final String COLUMN_MUISTUTUS_SPAIVA = "MUISTUTUS_SPAIVA"; // START DAY
-    public static final String COLUMN_MUISTUTUS_EPAIVA = "MUISTUTUS_EPAIVA"; // END DAY
     public static final String COLUMN_MUISTUTUS_AIKA = "MUISTUTUS_AIKA"; // TIME
     public static final String COLUMN_MUISTUTUS_NIMI = "MUISTUTUS_NIMI"; // NAME
     public static final String COLUMN_ID_MUISTUTUS = "ID"; //COLUMN ID
@@ -44,7 +43,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
     @Override
     public void onCreate(SQLiteDatabase db) {
         // Creates values and database with sql code. for MUISTUTUS
-        String createTableStatementMuistutus = "CREATE TABLE " + MUISTUTUS_TABLE + " (" + COLUMN_ID_MUISTUTUS + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MUISTUTUS_NIMI + " TEXT," + COLUMN_MUISTUTUS_SPAIVA + " DATE," + COLUMN_MUISTUTUS_EPAIVA + " DATE," + COLUMN_MUISTUTUS_AIKA + " TIME)";
+        String createTableStatementMuistutus = "CREATE TABLE " + MUISTUTUS_TABLE + " (" + COLUMN_ID_MUISTUTUS + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MUISTUTUS_NIMI + " TEXT," + COLUMN_MUISTUTUS_SPAIVA + " DATE," + COLUMN_MUISTUTUS_AIKA + " TIME)";
         db.execSQL(createTableStatementMuistutus);
 
         // Creates values and database with sql code. for PAIVAKIRJA
@@ -176,7 +175,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
         List<MuistutusData> returnListm = new ArrayList<>();
 
         // Get data from database
-        String queryString = "SELECT * FROM " + MUISTUTUS_TABLE;
+        String queryString = "SELECT * FROM " + MUISTUTUS_TABLE + " ORDER BY " + COLUMN_ID_MUISTUTUS + " DESC ";
 
         SQLiteDatabase db = this.getReadableDatabase();
 
@@ -207,14 +206,6 @@ public class MekaDataBase extends SQLiteOpenHelper{
         db.close();
 
         return returnListm;
-    }
-
-
-    public Cursor readallreminders() {
-        SQLiteDatabase database = this.getWritableDatabase();
-        String query = "SELECT * FROM " + MUISTUTUS_TABLE + " ORDER BY " + COLUMN_ID_MUISTUTUS +" DESC";                               //Sql query to  retrieve  data from the database
-        Cursor cursorrem = database.rawQuery(query, null);
-        return cursorrem;
     }
 
 
