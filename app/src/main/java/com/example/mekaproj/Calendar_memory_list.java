@@ -35,7 +35,7 @@ public class Calendar_memory_list extends AppCompatActivity {
             //Lähettää tiedot luettavaksi "CalendarActivity_viewlle."
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
-                Intent intent = new Intent(Calendar_memory_list.this, Paivakirja_view_delete.class);
+                Intent intent = new Intent(Calendar_memory_list.this, CalendarActivity_View.class);
                 intent.putExtra("POSITIONM",String.valueOf(position));
 
                 startActivity(intent);

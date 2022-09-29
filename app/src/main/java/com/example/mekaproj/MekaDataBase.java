@@ -102,10 +102,21 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
     }
 
-    //Deletes an data that was selected by a user.
+    ///REMOVES PAIVAKIRJA IF DELETE PRESSED
     public boolean deleteOne (PaivaKirjaData paivaKirjaData){
         SQLiteDatabase db = getWritableDatabase();
         String queryString = "DELETE FROM " + PAIVAKIRJA_TABLE + " WHERE " + COLUMN_ID + " = " + paivaKirjaData.getID();
+        Cursor cursor = db.rawQuery(queryString, null);
+        if(cursor.moveToFirst()){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    ///REMOVES MUISTUTUS IF DELETE PRESSED
+    public boolean deleteOneM (MuistutusData muistutusData){
+        SQLiteDatabase db = getWritableDatabase();
+        String queryString = "DELETE FROM " + MUISTUTUS_TABLE + " WHERE " + COLUMN_ID_MUISTUTUS + " = " + muistutusData.getIdM();
         Cursor cursor = db.rawQuery(queryString, null);
         if(cursor.moveToFirst()){
             return true;
