@@ -16,6 +16,7 @@ import android.widget.EditText;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
+import java.text.DateFormat;
 import java.util.Calendar;
 
 /* @Semen Morozov
@@ -120,12 +121,18 @@ public class MekaMuistutus extends AppCompatActivity {
                 Calendar calendar1 = Calendar.getInstance();
                 calendar1.set(Calendar.HOUR,hour);
                 calendar1.set(Calendar.MINUTE,min);
-                settime = hour+":"+ min;
+                updatetimeTEXT(calendar);
 
             }
+
         }, hour, min, is24HoursView);
         timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         timePickerDialog.show();
+    }
+    public void updatetimeTEXT(Calendar calendar){
+        String timetext = "";
+        timetext += DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar.getTime());
+        settime = timetext;
     }
 
     //send data to the Calendar activity page
