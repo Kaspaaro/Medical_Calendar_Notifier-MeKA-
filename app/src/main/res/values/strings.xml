@@ -7,4 +7,5 @@
     <string name="medicineName">Enter a medicine name</string>
     <string name="date">enter a date</string>
     <string name="time">enter a time</string>
+    <string name="textview">Take care of your health</string>
 </resources>
