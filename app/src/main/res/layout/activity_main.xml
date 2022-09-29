@@ -11,18 +11,18 @@
 
     <TextView
         android:id="@+id/textView2"
-        android:layout_width="147dp"
-        android:layout_height="147dp"
+        android:layout_width="243dp"
+        android:layout_height="238dp"
         android:background="@drawable/logoremove"
         android:textAlignment="center"
-        android:textSize="24sp"
+        android:textSize="20sp"
         android:textStyle="bold"
 
         app:layout_constraintBottom_toTopOf="@+id/btn_muistutuslisaa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.727" />
+        app:layout_constraintVertical_bias="0.688" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
