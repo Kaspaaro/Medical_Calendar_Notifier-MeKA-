@@ -5,8 +5,9 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/pill"
-
     tools:context=".MainActivity">
+
+<!--   background img source link : https://www.wallpaperflare.com/blue-and-black-medication-pills-spilled-from-bottle-tablet-wallpaper-zcfpa -->
 
     <TextView
         android:id="@+id/textView2"
@@ -17,11 +18,11 @@
         android:textSize="24sp"
         android:textStyle="bold"
 
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_muistutuslisaa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.226" />
+        app:layout_constraintVertical_bias="0.727" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"
