@@ -151,14 +151,14 @@ public class MekaMuistutus extends AppCompatActivity {
         MuistutusData muistutusData;
 
         try{
-            muistutusData = new MuistutusData(-1,medicineNAME.getText().toString(),setStartingdate,setEndingdate,settime);
+            muistutusData = new MuistutusData(-1,medicineNAME.getText().toString(),setStartingdate,settime);
 
             Toast.makeText(MekaMuistutus.this,"Lisätty",Toast.LENGTH_SHORT).show();
 
         }catch (Exception e){
             Toast.makeText(MekaMuistutus.this,"Muistutuksen tekemine epäonnistui",Toast.LENGTH_SHORT).show();
 
-            muistutusData = new MuistutusData(0,"ERROR","ERROR","ERROR","ERROR");
+            muistutusData = new MuistutusData(0,"ERROR","ERROR","ERROR");
 
         }
         MekaDataBase mekaDataBase = new MekaDataBase(MekaMuistutus.this);

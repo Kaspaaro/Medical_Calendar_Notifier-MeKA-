@@ -19,7 +19,6 @@ import java.util.List;
 public class CalendarActivity_View extends AppCompatActivity {
     private TextView date, time;
     private TextView tv_MuistutusSPAIVA;
-    private TextView tv_MuistutusEPAIVA;
     private TextView tv_MEDnimi;
     private TextView tv_MTIME;
     private MuistutusData Muget;
@@ -34,7 +33,6 @@ public class CalendarActivity_View extends AppCompatActivity {
 
             //Id kentät
         tv_MuistutusSPAIVA = findViewById(R.id.startDateTXT);
-        tv_MuistutusEPAIVA = findViewById(R.id.endDateTXT);
         tv_MEDnimi = findViewById(R.id.editTextNAMEMED);
         tv_MTIME = findViewById(R.id.timeTxt);
 
@@ -50,12 +48,10 @@ public class CalendarActivity_View extends AppCompatActivity {
 
         String medname = muistutus.getMedName();
         String startdate = muistutus.getStartDate();
-        String enddate = muistutus.getEndDate();
         String timem = muistutus.getTime();
 
         tv_MEDnimi.setText(medname);
         tv_MuistutusSPAIVA.setText(startdate);
-        tv_MuistutusEPAIVA.setText((enddate));
         tv_MTIME.setText(timem);
         Muget = muistutus;
         mekget = muistdata;

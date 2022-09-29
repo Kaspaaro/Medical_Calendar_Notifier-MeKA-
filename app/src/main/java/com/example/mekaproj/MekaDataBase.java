@@ -55,7 +55,11 @@ public class MekaDataBase extends SQLiteOpenHelper{
     //this is called if the database version is updated so old users dont lose data.
     @Override
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
-
+        String query = "DROP TABLE IF EXISTS " + MUISTUTUS_TABLE;  // MUISTUTUS sql query to check table with the same name or not
+        String query2 = "DROP TABLE IF EXISTS " + PAIVAKIRJA_TABLE;  //PAIVAKIRJA sql query to check table with the same name or not
+        sqLiteDatabase.execSQL(query);
+        sqLiteDatabase.execSQL(query2); //executes the sql command
+        onCreate(sqLiteDatabase);
     }
 
     public boolean addOneMUIS (MuistutusData muistutusData){
@@ -64,7 +68,6 @@ public class MekaDataBase extends SQLiteOpenHelper{
         ContentValues cv = new ContentValues();
 
         cv.put(COLUMN_MUISTUTUS_SPAIVA,muistutusData.getStartDate());
-        cv.put(COLUMN_MUISTUTUS_EPAIVA,muistutusData.getEndDate());
         cv.put(COLUMN_MUISTUTUS_AIKA,muistutusData.getTime());
         cv.put(COLUMN_MUISTUTUS_NIMI,muistutusData.getMedName());
 
@@ -184,12 +187,10 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
                 Integer muistutusId = cursor.getInt(0);
                 String medicineName = cursor.getString(1);
-
                 String sDate = cursor.getString(2);
-                String eDate = cursor.getString(3);
-                String mtime = cursor.getString(4);
+                String mtime = cursor.getString(3);
 
-                MuistutusData muistutusData = new MuistutusData(muistutusId,medicineName,sDate,eDate,mtime);
+                MuistutusData muistutusData = new MuistutusData(muistutusId,medicineName,sDate,mtime);
 
                 returnListm.add(muistutusData);
 
@@ -207,5 +208,14 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
         return returnListm;
     }
+
+
+    public Cursor readallreminders() {
+        SQLiteDatabase database = this.getWritableDatabase();
+        String query = "SELECT * FROM " + MUISTUTUS_TABLE + " ORDER BY " + COLUMN_ID_MUISTUTUS +" DESC";                               //Sql query to  retrieve  data from the database
+        Cursor cursorrem = database.rawQuery(query, null);
+        return cursorrem;
+    }
+
 
 }
