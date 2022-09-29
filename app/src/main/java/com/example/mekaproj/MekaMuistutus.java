@@ -3,12 +3,16 @@ package com.example.mekaproj;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.app.AlarmManager;
 import android.app.DatePickerDialog;
+import android.app.PendingIntent;
 import android.app.TimePickerDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -32,6 +36,7 @@ public class MekaMuistutus extends AppCompatActivity {
     private String setEndingdate;
     private String setStartingdate;
     private String settime;
+    private Calendar calendar;
     // buttons activation
 
     @Override
@@ -40,10 +45,10 @@ public class MekaMuistutus extends AppCompatActivity {
         setContentView(R.layout.activity_meka_muistutus);
 
         //Buttons findbyid on activity
-        btnSDate =(Button) findViewById(R.id.btn_date);
-        btnEDate =(Button) findViewById(R.id.btn_date2);
-        btnTime=(Button) findViewById(R.id.btn_time);
-        medicineNAME = (EditText) findViewById(R.id.editTextMedicine);
+        btnSDate = findViewById(R.id.btn_date);
+        btnEDate = findViewById(R.id.btn_date2);
+        btnTime= findViewById(R.id.btn_time);
+        medicineNAME =  findViewById(R.id.editTextMedicine);
 
 
 
@@ -73,7 +78,7 @@ public class MekaMuistutus extends AppCompatActivity {
     //pick Date value
 
     private void setDate() {
-        Calendar calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int date = calendar.get(Calendar.DATE);
@@ -91,7 +96,7 @@ public class MekaMuistutus extends AppCompatActivity {
     }
 
     private void setDate2() {
-        Calendar calendar = Calendar.getInstance();
+        calendar = Calendar.getInstance();
         int year = calendar.get(Calendar.YEAR);
         int month = calendar.get(Calendar.MONTH);
         int date = calendar.get(Calendar.DATE);
@@ -138,6 +143,7 @@ public class MekaMuistutus extends AppCompatActivity {
         settime = timetext;
     }
 
+
     //send data to the Calendar activity page
     public void btn_addToCalendar(View v) {
 
@@ -160,6 +166,7 @@ public class MekaMuistutus extends AppCompatActivity {
         Intent intent = new Intent(this, Calendar_memory_list.class);
         startActivity(intent);
     }
+
 
 
 }
