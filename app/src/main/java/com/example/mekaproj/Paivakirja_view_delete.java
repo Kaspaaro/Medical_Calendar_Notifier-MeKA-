@@ -23,8 +23,6 @@ public class Paivakirja_view_delete extends AppCompatActivity {
     private static final String TAG = "Paivakirja_view_delete";
     private TextView tv_Paivakirjadatakirje;  //Kirje Textview osio mihin on kirjoitettu tarina
     private TextView tv_Paivakirjadataotsikko; //Tarinan Otsikko
-    ArrayAdapter PaivakirjaArrayAdapter;
-    private int checker = 0;
     private PaivaKirjaData getpk;
     private MekaDataBase getdb;
     @Override
@@ -42,7 +40,6 @@ public class Paivakirja_view_delete extends AppCompatActivity {
         String pos = intent.getStringExtra("POSITION");
         int position = Integer.parseInt(pos);
         PaivaKirjaData paivakirja = arrayList.get(position);
-        int id = paivakirja.getID();
         String otsikko = paivakirja.getOtsikko();
         String kirje = paivakirja.getKirje();
         tv_Paivakirjadataotsikko.setText(otsikko);
