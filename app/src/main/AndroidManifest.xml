@@ -61,7 +61,11 @@
         </activity>
 
         <activity android:name=".MekaMuistutus" />
+
         <activity android:name=".CalendarActivity_View" />
+
+        <activity android:name=".NotificationMessage"/>
+        <receiver android:name=".AlertReceiver"/>
     </application>
 
 </manifest>
