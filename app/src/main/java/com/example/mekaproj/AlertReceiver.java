@@ -24,7 +24,6 @@ public class AlertReceiver extends BroadcastReceiver {
         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         //Notification Builder
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent1, PendingIntent.FLAG_ONE_SHOT);
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "notify_001");
 
@@ -32,8 +31,6 @@ public class AlertReceiver extends BroadcastReceiver {
         //here we set all the properties for the notification
         RemoteViews contentView = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
         contentView.setImageViewResource(R.id.imageView4, R.mipmap.ic_launcher);
-        PendingIntent pendingSwitchIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
-        contentView.setOnClickPendingIntent(R.id.flashButton, pendingSwitchIntent);
         contentView.setTextViewText(R.id.message, text);
         contentView.setTextViewText(R.id.date, date);
         mBuilder.setSmallIcon(R.drawable.pill);
@@ -44,8 +41,6 @@ public class AlertReceiver extends BroadcastReceiver {
         mBuilder.setOnlyAlertOnce(true);
         mBuilder.build().flags = Notification.FLAG_NO_CLEAR | Notification.PRIORITY_HIGH;
         mBuilder.setContent(contentView);
-        mBuilder.setContentIntent(pendingIntent);
-
         //we have to create notification channel after api level 26+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
