@@ -48,7 +48,6 @@ public class MekaMuistutus extends AppCompatActivity {
 
         //Buttons findbyid on activity
         btnSDate = findViewById(R.id.btn_date);
-        btnEDate = findViewById(R.id.btn_date2);
         btnTime= findViewById(R.id.btn_time);
         medicineNAME =  findViewById(R.id.editTextMedicine);
 

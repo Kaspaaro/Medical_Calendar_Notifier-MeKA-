@@ -11,7 +11,7 @@
         android:id="@+id/editTextMedicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="24dp"
+        android:layout_marginTop="35dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="center"
@@ -42,12 +42,11 @@
         android:id="@+id/btn_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="35dp"
         android:backgroundTint="@color/teal_700"
         android:hint="@string/time"
         android:text="Select a time"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/btn_date" />
 
@@ -70,26 +69,12 @@
         android:id="@+id/btn_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="52dp"
         android:backgroundTint="@color/teal_700"
         android:hint="@string/date"
         android:text="Select a Start date"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
-
-    <Button
-        android:id="@+id/btn_date2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_marginBottom="16dp"
-        android:backgroundTint="@color/teal_700"
-        android:hint="@string/date"
-        android:text="Select a End date"
-        app:layout_constraintBottom_toTopOf="@+id/btn_time"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/btn_date" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
