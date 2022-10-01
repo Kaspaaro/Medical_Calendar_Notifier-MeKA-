@@ -36,7 +36,7 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:orientation="vertical"
-        app:layout_constraintGuide_begin="380dp" />
+        app:layout_constraintGuide_end="366dp" />
 
     <TextView
         android:id="@+id/textView2"
@@ -49,12 +49,14 @@
         app:layout_constraintBottom_toTopOf="@+id/btn_muistutuslisaa"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.505" />
 
     <Button
         android:id="@+id/paivakirjadata"
         android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
+        android:background="@drawable/custom_buttons"
         android:backgroundTint="@color/teal_700"
         android:onClick="btn_paivakirjadata"
         android:text="Päiväkirjat"
@@ -63,13 +65,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/button3"
         app:layout_constraintTop_toBottomOf="@+id/button3"
-        android:background="@drawable/custom_buttons"
-        app:layout_constraintVertical_bias="0.05" />
+        app:layout_constraintVertical_bias="0.036" />
 
     <Button
         android:id="@+id/btn_muistutuslisaa"
         android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:background="@drawable/custom_buttons"
         android:onClick="muistutus_btn"
         android:text="Lisää muistutus"
@@ -79,13 +80,14 @@
         app:layout_constraintStart_toStartOf="@+id/textView2"
         app:layout_constraintTop_toTopOf="@+id/guideline2"
 
-        app:layout_constraintVertical_bias="0.344" />
+        app:layout_constraintVertical_bias="0.213" />
 
     <Button
         android:id="@+id/button3"
         android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:layout_marginTop="8dp"
+        android:background="@drawable/custom_buttons"
         android:onClick="paivakirjabtn"
         android:text="Kirjoita päiväkirja"
         app:layout_constraintBottom_toTopOf="@+id/guideline3"
@@ -93,13 +95,12 @@
         app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btn_muistutuslisaa"
         app:layout_constraintTop_toBottomOf="@+id/btn_muistutuspoista"
-        android:background="@drawable/custom_buttons"
-        app:layout_constraintVertical_bias="0.064" />
+        app:layout_constraintVertical_bias="0.095" />
 
     <Button
         android:id="@+id/btn_muistutuspoista"
         android:layout_width="210dp"
-        android:layout_height="45dp"
+        android:layout_height="40dp"
         android:background="@drawable/custom_buttons"
         android:backgroundTint="@color/teal_700"
         android:onClick="btn_poistaMuistutus"
