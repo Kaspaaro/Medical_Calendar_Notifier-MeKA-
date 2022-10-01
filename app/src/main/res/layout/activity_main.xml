@@ -54,7 +54,7 @@
     <Button
         android:id="@+id/paivakirjadata"
         android:layout_width="250dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:backgroundTint="@color/teal_700"
         android:onClick="btn_paivakirjadata"
         android:text="Päiväkirjat"
@@ -68,7 +68,7 @@
     <Button
         android:id="@+id/btn_muistutuslisaa"
         android:layout_width="250dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:backgroundTint="@color/teal_700"
         android:onClick="muistutus_btn"
         android:text="Lisää muistutus"
@@ -82,7 +82,7 @@
     <Button
         android:id="@+id/button3"
         android:layout_width="250dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:layout_marginTop="8dp"
         android:backgroundTint="@color/teal_700"
         android:onClick="paivakirjabtn"
@@ -97,7 +97,7 @@
     <Button
         android:id="@+id/btn_muistutuspoista"
         android:layout_width="250dp"
-        android:layout_height="44dp"
+        android:layout_height="48dp"
         android:backgroundTint="@color/teal_700"
         android:onClick="btn_poistaMuistutus"
         android:text="Poista Muistutus"

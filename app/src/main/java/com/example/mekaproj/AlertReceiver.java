@@ -11,7 +11,10 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.RemoteViews;
 import androidx.core.app.NotificationCompat;
-
+/**
+ *
+ * @author Kaspar Tullus
+ */
 public class AlertReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
@@ -26,14 +29,17 @@ public class AlertReceiver extends BroadcastReceiver {
         //Notification Builder
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "notify_001");
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent1, PendingIntent.FLAG_ONE_SHOT);
 
 
         //here we set all the properties for the notification
         RemoteViews contentView = new RemoteViews(context.getPackageName(), R.layout.notification_layout);
-        contentView.setImageViewResource(R.id.imageView4, R.mipmap.ic_launcher);
+        contentView.setImageViewResource(R.id.imageView4, R.drawable.logoremove);
+        PendingIntent pendingSwitchIntent = PendingIntent.getBroadcast(context, 0, intent, 0);
+        contentView.setOnClickPendingIntent(R.id.flashButton, pendingSwitchIntent);
         contentView.setTextViewText(R.id.message, text);
         contentView.setTextViewText(R.id.date, date);
-        mBuilder.setSmallIcon(R.drawable.pill);
+        mBuilder.setSmallIcon(R.drawable.logoremove);
         mBuilder.setAutoCancel(true);
         mBuilder.setOngoing(true);
         mBuilder.setAutoCancel(true);
@@ -41,6 +47,7 @@ public class AlertReceiver extends BroadcastReceiver {
         mBuilder.setOnlyAlertOnce(true);
         mBuilder.build().flags = Notification.FLAG_NO_CLEAR | Notification.PRIORITY_HIGH;
         mBuilder.setContent(contentView);
+        mBuilder.setContentIntent(pendingIntent);
         //we have to create notification channel after api level 26+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
