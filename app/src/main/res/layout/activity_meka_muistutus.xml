@@ -43,7 +43,7 @@
         android:layout_marginTop="35dp"
         android:backgroundTint="@color/teal_700"
         android:hint="@string/time"
-        android:text="Select a time"
+        android:text="select a time"
         app:layout_constraintEnd_toEndOf="@+id/btn_date"
         app:layout_constraintStart_toStartOf="@+id/btn_date"
         app:layout_constraintTop_toBottomOf="@+id/btn_date" />
@@ -70,7 +70,7 @@
         android:layout_marginTop="52dp"
         android:backgroundTint="@color/teal_700"
         android:hint="@string/date"
-        android:text="Select a Start date"
+        android:text="select a start date"
         app:layout_constraintEnd_toEndOf="@+id/textView"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />

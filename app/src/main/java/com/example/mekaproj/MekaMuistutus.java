@@ -34,11 +34,13 @@ import java.util.Date;
 public class MekaMuistutus extends AppCompatActivity {
     private static final String TAG = "MekaMuistutus";
     String timeTonotify;
-    Button btnSDate,btnEDate, btnTime;
+    Button btnSDate, btnTime;
     EditText medicineNAME;
     private String setStartingdate;
     private String settime;
     private Calendar calendar;
+    private String originaldatetext;
+    private String originaltimetext;
     // buttons activation
 
     @Override
@@ -50,7 +52,8 @@ public class MekaMuistutus extends AppCompatActivity {
         btnSDate = findViewById(R.id.btn_date);
         btnTime= findViewById(R.id.btn_time);
         medicineNAME =  findViewById(R.id.editTextMedicine);
-
+        originaldatetext = btnSDate.getText().toString();
+        originaltimetext = btnTime.getText().toString();
 
 
         btnSDate.setOnClickListener(new View.OnClickListener() {
@@ -84,6 +87,7 @@ public class MekaMuistutus extends AppCompatActivity {
                 String months = Integer.toString(month + 1);
                 String years = Integer.toString(year);
                 setStartingdate = days + "-" + months + "-" + years;
+                btnSDate.setText(setStartingdate);
             }
         },year, month, date);
         datePickerDialog.show();
@@ -105,9 +109,8 @@ public class MekaMuistutus extends AppCompatActivity {
                 Calendar calendar1 = Calendar.getInstance();
                 calendar1.set(Calendar.HOUR,hour);
                 calendar1.set(Calendar.MINUTE,min);
-
                 updatetimeTEXT(calendar1);
-
+                btnTime.setText(settime);
             }
 
         }, hour, min, is24HoursView);
@@ -145,7 +148,7 @@ public class MekaMuistutus extends AppCompatActivity {
         if (medname.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please Enter text", Toast.LENGTH_SHORT).show();   //shows the toast if input field is empty
         } else {
-            if (time.equals("") || date.equals("")) {                                               //shows toast if date and time are not selected
+            if (time.equals(originaltimetext) || date.equals(originaldatetext)) {                                               //shows toast if date and time are not selected
                 Toast.makeText(getApplicationContext(), "Please select date and time", Toast.LENGTH_SHORT).show();
             } else {
                 setAlarm(medicineNAME.getText().toString(),setStartingdate,settime);
