@@ -39,6 +39,7 @@ public class Calendar_memory_list extends AppCompatActivity {
                 intent.putExtra("POSITIONM",String.valueOf(position));
 
                 startActivity(intent);
+                finish();
 
             }
         });

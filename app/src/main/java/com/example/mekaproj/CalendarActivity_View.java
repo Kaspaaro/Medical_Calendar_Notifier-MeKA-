@@ -24,7 +24,6 @@ public class CalendarActivity_View extends AppCompatActivity {
     private MuistutusData Muget;
     private MekaDataBase mekget;
 
-
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
