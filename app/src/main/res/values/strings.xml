@@ -8,4 +8,5 @@
     <string name="date">enter a date</string>
     <string name="time">enter a time</string>
     <string name="textview">Take care of your health</string>
+    <string name="paivakirja">Kirjoita otsikko</string>
 </resources>

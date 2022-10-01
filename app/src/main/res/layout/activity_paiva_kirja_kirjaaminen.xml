@@ -13,9 +13,9 @@
         android:layout_height="54dp"
         android:ems="10"
         android:inputType="textPersonName"
-        android:text="Kirjoita Otsikko"
         android:textAlignment="center"
         android:textSize="24sp"
+        android:hint="@string/paivakirja"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -29,8 +29,8 @@
 
     <Button
         android:id="@+id/btnTallennaPK"
-        android:layout_width="214dp"
-        android:layout_height="49dp"
+        android:layout_width="210dp"
+        android:layout_height="45dp"
         android:layout_marginBottom="52dp"
         android:onClick="btnSavePK"
         android:text="Tallenna"
@@ -38,6 +38,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
+        android:background="@drawable/custom_buttons"
         app:layout_constraintTop_toBottomOf="@+id/editTextKirje" />
 
     <EditText
@@ -47,7 +48,7 @@
         android:ems="10"
         android:gravity="start|top"
         android:inputType="textMultiLine"
-        android:text="@string/KirjanTeksti"
+        android:hint="@string/KirjanTeksti"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextOtsikko" />

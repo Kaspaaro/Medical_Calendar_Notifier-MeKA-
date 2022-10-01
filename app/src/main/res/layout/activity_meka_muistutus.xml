@@ -11,7 +11,7 @@
         android:id="@+id/editTextMedicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="48dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="center"
@@ -20,19 +20,20 @@
         android:minHeight="48dp"
         android:textColorHint="#795548"
         app:layout_constraintEnd_toEndOf="@+id/btn_time"
-        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/btn_time"
         app:layout_constraintTop_toBottomOf="@+id/btn_time" />
 
     <Button
         android:id="@+id/btn_addToCalendar"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
+        android:layout_width="160dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/custom_buttons"
         android:backgroundTint="@color/teal_700"
         android:onClick="btn_addToCalendar"
-        android:text="Add to calendar"
+        android:text="save"
         app:layout_constraintEnd_toEndOf="@+id/editTextMedicine"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="@+id/editTextMedicine"
         app:layout_constraintTop_toBottomOf="@+id/editTextMedicine" />
 
@@ -40,11 +41,13 @@
         android:id="@+id/btn_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="35dp"
+        android:layout_marginTop="44dp"
+        android:background="@drawable/custom_buttons"
         android:backgroundTint="@color/teal_700"
         android:hint="@string/time"
-        android:text="select a time"
+        android:text="select time"
         app:layout_constraintEnd_toEndOf="@+id/btn_date"
+        app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toStartOf="@+id/btn_date"
         app:layout_constraintTop_toBottomOf="@+id/btn_date" />
 
@@ -67,11 +70,13 @@
         android:id="@+id/btn_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/custom_buttons"
         android:backgroundTint="@color/teal_700"
         android:hint="@string/date"
-        android:text="select a start date"
+        android:text="select date"
         app:layout_constraintEnd_toEndOf="@+id/textView"
+        app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 
