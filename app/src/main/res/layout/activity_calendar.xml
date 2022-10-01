@@ -19,6 +19,9 @@
         android:hint="@string/time"
         android:onClick="btn_calendar_Delete"
         android:text="DELETE"
+        android:background="@drawable/custom_buttons"
+
+
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.498"
