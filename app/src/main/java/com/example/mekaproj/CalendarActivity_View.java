@@ -58,9 +58,8 @@ public class CalendarActivity_View extends AppCompatActivity {
     }
     public void btn_calendar_Delete (View view){
         mekget.deleteOneM(Muget);
-        Intent intent = new Intent(CalendarActivity_View.this, Calendar_memory_list.class);
+        Intent intent = new Intent(CalendarActivity_View.this, MainActivity.class);
         startActivity(intent);
-        finish();
     }
 
 
