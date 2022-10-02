@@ -12,7 +12,6 @@ import android.content.Intent;
 import android.graphics.Color;
 import android.graphics.drawable.ColorDrawable;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
@@ -32,31 +31,27 @@ import java.util.Date;
  * @author Semen Morozov
  */
 public class MekaMuistutus extends AppCompatActivity {
-
     private static final String TAG = "MekaMuistutus";
-
     String timeTonotify;
     Button btnSDate, btnTime;
     EditText medicineNAME;
-
     private String setStartingdate;
     private String settime;
     private Calendar calendar;
     private String originaldatetext;
     private String originaltimetext;
-
+    private int id = View.generateViewId();
     // buttons activation
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meka_muistutus);
 
         //Buttons findbyid on activity
-
         btnSDate = findViewById(R.id.btn_date);
         btnTime= findViewById(R.id.btn_time);
         medicineNAME =  findViewById(R.id.editTextMedicine);
-
         originaldatetext = btnSDate.getText().toString();
         originaltimetext = btnTime.getText().toString();
 
@@ -68,12 +63,9 @@ public class MekaMuistutus extends AppCompatActivity {
                 setDate();
             }
         });
-
         btnTime.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
-
                 setTime();
             }
         });
@@ -89,14 +81,11 @@ public class MekaMuistutus extends AppCompatActivity {
         int date = calendar.get(Calendar.DATE);
 
         DatePickerDialog datePickerDialog = new DatePickerDialog(this, new DatePickerDialog.OnDateSetListener() {
-
             @Override
             public void onDateSet(DatePicker view, int year, int month, int data) {
-
                 String days = Integer.toString(data);
                 String months = Integer.toString(month + 1);
                 String years = Integer.toString(year);
-
                 setStartingdate = days + "-" + months + "-" + years;
                 btnSDate.setText(setStartingdate);
             }
@@ -114,17 +103,13 @@ public class MekaMuistutus extends AppCompatActivity {
         boolean is24HoursView=true;
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog, new TimePickerDialog.OnTimeSetListener() {
-
             @Override
             public void onTimeSet(TimePicker view, int hour, int min) {
-
                 timeTonotify = hour + ":" + min;
-
                 Calendar calendar1 = Calendar.getInstance();
                 calendar1.set(Calendar.HOUR,hour);
                 calendar1.set(Calendar.MINUTE,min);
                 updatetimeTEXT(calendar1);
-
                 btnTime.setText(settime);
             }
 
@@ -142,69 +127,64 @@ public class MekaMuistutus extends AppCompatActivity {
     //send data to the Calendar activity page
     public void btn_addToCalendar(View v) {
 
-        String medname = medicineNAME.getText().toString().trim();      //access the data form the input field
-        String date = btnSDate.getText().toString().trim();             //access the date form the choose date button
+        String medname = medicineNAME.getText().toString().trim();                               //access the data form the input field
+        String date = btnSDate.getText().toString().trim();                                 //access the date form the choose date button
         String time = btnTime.getText().toString().trim();
 
         ///Muistutus datan kirjaaminen
         MuistutusData muistutusData;
-
-        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);         //assigining alarm manager object to set alarm
-
-        //AlertReciver Intent
-
-        Intent intentalert = new Intent(getApplicationContext(), AlertReceiver.class);
-        intentalert.putExtra("event", medname);                                     //sending data to alarm class to create channel and notification
-        intentalert.putExtra("time", date);
-        intentalert.putExtra("date", time);
-
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intentalert, PendingIntent.FLAG_ONE_SHOT);
-        String dateandtime = date + " " + timeTonotify;
-        DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
-
         try{
-            muistutusData = new MuistutusData(-1,medicineNAME.getText().toString(),date,time);
-
-            Date date1 = formatter.parse(dateandtime);
-            am.set(AlarmManager.RTC_WAKEUP,date1.getTime(), pendingIntent);
+            muistutusData = new MuistutusData(-1,medicineNAME.getText().toString(),setStartingdate,settime);
 
             Toast.makeText(MekaMuistutus.this,"Lisätty",Toast.LENGTH_SHORT).show();
 
         }catch (Exception e){
-
             Toast.makeText(MekaMuistutus.this,"Muistutuksen tekemine epäonnistui",Toast.LENGTH_SHORT).show();
+
             muistutusData = new MuistutusData(0,"ERROR","ERROR","ERROR");
 
         }
-
-
         if (medname.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please Enter text", Toast.LENGTH_SHORT).show();   //shows the toast if input field is empty
-        }
-
-        else {
-
+        } else {
             if (time.equals(originaltimetext) || date.equals(originaldatetext)) {                                               //shows toast if date and time are not selected
                 Toast.makeText(getApplicationContext(), "Please select date and time", Toast.LENGTH_SHORT).show();
-            }
-
-            else {
-
+            } else {
+                setAlarm(medicineNAME.getText().toString(),setStartingdate,settime);
                 MekaDataBase mekaDataBase = new MekaDataBase(MekaMuistutus.this);
                 mekaDataBase.addOneMUIS(muistutusData);
-
                 Intent intent = new Intent(MekaMuistutus.this, Calendar_memory_list.class);
                 startActivity(intent);
-
-                finish(); //kill the activity so the person cant return to it with the return buttons.
-
+                finish();
 
             }
         }
 
+
     }
+    private void setAlarm(String text, String date, String time) {
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);                   //assigining alaram manager object to set alaram
 
-}
+        Intent intent = new Intent(getApplicationContext(), AlertReceiver.class);
+        intent.putExtra("event", text);                                                       //sending data to alarm class to create channel and notification
+        intent.putExtra("time", date);
+        intent.putExtra("date", time);
+        intent.putExtra("id",id);
 
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), id, intent, PendingIntent.FLAG_ONE_SHOT);
+        String dateandtime = date + " " + timeTonotify;
+        DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
+        try {
+            Date date1 = formatter.parse(dateandtime);
+            am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
+            Toast.makeText(getApplicationContext(), "Reminder set"+id, Toast.LENGTH_SHORT).show();
+
+        } catch (ParseException e) {
+            e.printStackTrace();
+        }
+
+
+    }
+    }
 
 
