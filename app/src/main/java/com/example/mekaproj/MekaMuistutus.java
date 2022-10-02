@@ -118,7 +118,7 @@ public class MekaMuistutus extends AppCompatActivity {
         timePickerDialog.show();
     }
     public void updatetimeTEXT(Calendar calendar1){
-        String timetext = "";
+        String timetext;
         timetext = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar1.getTime());
         settime = timetext;
     }
@@ -176,6 +176,7 @@ public class MekaMuistutus extends AppCompatActivity {
         DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
         try {
             Date date1 = formatter.parse(dateandtime);
+            assert date1 != null;
             am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
             Toast.makeText(getApplicationContext(), "Reminder set"+id, Toast.LENGTH_SHORT).show();
 
