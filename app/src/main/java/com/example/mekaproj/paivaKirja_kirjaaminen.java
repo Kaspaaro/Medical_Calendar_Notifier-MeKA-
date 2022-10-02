@@ -52,10 +52,6 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
 
                 }
 
-                Intent intentBack = new Intent(getApplicationContext(), MainActivity.class);                //this intent will be called once the setting alarm completes
-                intentBack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                startActivity(intentBack);
-
                 MekaDataBase mekaDataBase = new MekaDataBase(paivaKirja_kirjaaminen.this);
 
                 //Datan lähettäminen
