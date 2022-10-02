@@ -21,15 +21,15 @@ public class AlertReceiver extends BroadcastReceiver {
         Bundle bundle = intent.getExtras();
         String text = bundle.getString("event");
         String date = bundle.getString("date") + "\n " + bundle.getString("time");
-
+        int id = bundle.getInt("id");
         //Click on Notification
         Intent intent1 = new Intent(context, Calendar_memory_list.class);
         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
 
         //Notification Builder
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "notify_001");
-        PendingIntent pendingIntent = PendingIntent.getActivity(context, 1, intent1, PendingIntent.FLAG_ONE_SHOT);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "notify"+id);
+        PendingIntent pendingIntent = PendingIntent.getActivity(context, id, intent1, PendingIntent.FLAG_ONE_SHOT);
 
 
         //here we set all the properties for the notification
@@ -59,7 +59,7 @@ public class AlertReceiver extends BroadcastReceiver {
         }
 
         Notification notification = mBuilder.build();
-        notificationManager.notify(1, notification);
+        notificationManager.notify(id, notification);
 
 
     }
