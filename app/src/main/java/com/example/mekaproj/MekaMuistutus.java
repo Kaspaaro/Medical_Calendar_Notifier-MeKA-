@@ -25,7 +25,6 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
-import java.util.Random;
 
 /**
  *
@@ -42,7 +41,6 @@ public class MekaMuistutus extends AppCompatActivity {
     private Calendar calendar;
     private String originaldatetext;
     private String originaltimetext;
-    private int id = View.generateViewId();
     // buttons activation
 
     @Override
@@ -135,6 +133,7 @@ public class MekaMuistutus extends AppCompatActivity {
 
         ///Muistutus datan kirjaaminen
         MuistutusData muistutusData;
+
         try{
             muistutusData = new MuistutusData(-1,medicineNAME.getText().toString(),setStartingdate,settime);
 
@@ -154,10 +153,10 @@ public class MekaMuistutus extends AppCompatActivity {
             } else {
                 setAlarm(medicineNAME.getText().toString(),setStartingdate,settime);
                 MekaDataBase mekaDataBase = new MekaDataBase(MekaMuistutus.this);
-                mekaDataBase.addOneMUIS(muistutusData);
+                boolean success = mekaDataBase.addOneMUIS(muistutusData);
                 Intent intent = new Intent(MekaMuistutus.this, Calendar_memory_list.class);
                 startActivity(intent);
-                finish();
+
 
             }
         }
@@ -171,20 +170,22 @@ public class MekaMuistutus extends AppCompatActivity {
         intent.putExtra("event", text);                                                       //sending data to alarm class to create channel and notification
         intent.putExtra("time", date);
         intent.putExtra("date", time);
-        intent.putExtra("id",id);
 
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), id, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), 0, intent, PendingIntent.FLAG_ONE_SHOT);
         String dateandtime = date + " " + timeTonotify;
         DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
         try {
             Date date1 = formatter.parse(dateandtime);
             am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
-            Toast.makeText(getApplicationContext(), "Reminder set"+id, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Reminder Set", Toast.LENGTH_SHORT).show();
 
         } catch (ParseException e) {
             e.printStackTrace();
         }
 
+        Intent intentBack = new Intent(getApplicationContext(), MainActivity.class);                //this intent will be called once the setting alaram is completes
+        intentBack.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+        startActivity(intentBack);                                                                  //navigates from adding reminder activity ot mainactivity
 
     }
     }
