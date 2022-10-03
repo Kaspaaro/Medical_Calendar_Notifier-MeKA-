@@ -48,7 +48,8 @@ public class AlertReceiver extends BroadcastReceiver {
         mBuilder.build().flags = Notification.FLAG_NO_CLEAR | Notification.PRIORITY_HIGH;
         mBuilder.setContent(contentView);
         mBuilder.setContentIntent(pendingIntent);
-        //we have to create notification channel after api level 26+
+
+        //we have to create notification channel after api  26+
 
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId = "channel_id";
