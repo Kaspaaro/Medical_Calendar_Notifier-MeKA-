@@ -1,5 +1,6 @@
 package com.example.mekaproj;
 
+import android.annotation.SuppressLint;
 import android.app.Notification;
 import android.app.NotificationChannel;
 import android.app.NotificationManager;
@@ -9,13 +10,8 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Build;
 import android.os.Bundle;
-import android.view.View;
 import android.widget.RemoteViews;
-
-import androidx.annotation.IdRes;
 import androidx.core.app.NotificationCompat;
-
-import java.util.EventListener;
 
 /**
  *
@@ -34,7 +30,9 @@ public class AlertReceiver extends BroadcastReceiver {
         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         //Notification Builder
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
-        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, "notify"+id);
+        NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, Integer.toString(id));
+
+        @SuppressLint("UnspecifiedImmutableFlag")
         PendingIntent pendingIntent = PendingIntent.getActivity(context, id, intent1, PendingIntent.FLAG_ONE_SHOT);
 
 
@@ -52,6 +50,8 @@ public class AlertReceiver extends BroadcastReceiver {
         mBuilder.setContentIntent(pendingIntent);
         mBuilder.setAutoCancel(true);
         mBuilder.setOnlyAlertOnce(true);
+
+
         //we have to create notification channel after api  26+
         if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.O) {
             String channelId = "channel_id";
