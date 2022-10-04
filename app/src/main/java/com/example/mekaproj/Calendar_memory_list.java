@@ -19,6 +19,7 @@ public class Calendar_memory_list extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_memory_list);
+
         //Tämä Näyttää Tallennetut rivit databasesta view listalle
         lv_Muistutusdata = findViewById(R.id.list_Memo_Calendar);
         MekaDataBase mekaDataBase = new MekaDataBase(Calendar_memory_list.this);
