@@ -24,6 +24,7 @@ import java.text.ParseException;
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
 import java.util.Date;
+import java.util.Random;
 
 /**
  *
@@ -40,9 +41,12 @@ public class MekaMuistutus extends AppCompatActivity {
     private Calendar calendar;
     private String originaldatetext;
     private String originaltimetext;
-    private int id = View.generateViewId();
-    // buttons activation
 
+    //GENERATES RANDOM NUMBERS FOR NOTIFICATION ID //SO THE CHANCES TO HIT THE SAME ID ARE 0.00001%
+    Random random = new Random();
+    private int id = random.nextInt();
+
+    // buttons activation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -22,6 +22,7 @@ public class AlertReceiver extends BroadcastReceiver {
         String text = bundle.getString("event");
         String date = bundle.getString("date") + "\n " + bundle.getString("time");
         int id = bundle.getInt("id");
+
         //Click on Notification
         Intent intent1 = new Intent(context, Calendar_memory_list.class);
         intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
