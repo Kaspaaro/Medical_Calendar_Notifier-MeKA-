@@ -32,7 +32,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
 /////////////////////////////////////////////////////////////////////////////
 
-        ///MAINDATABASE SQLite!////
+        ///MAINDATABASE SQLite////
     public MekaDataBase(@Nullable Context context) {
 
         super(context, DB_NAME, null, 1);
