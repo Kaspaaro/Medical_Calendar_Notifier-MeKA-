@@ -1,26 +1,32 @@
 package com.example.mekaproj;
 
 import android.annotation.SuppressLint;
+
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
+import java.util.Random;
 
 /**
  *
  * @author Kaspar Tullus
  */
 
-public class CalendarActivity_View extends AppCompatActivity {
+public class CalendarActivity_View extends AppCompatActivity  {
     private TextView tv_MuistutusSPAIVA;
     private TextView tv_MEDnimi;
     private TextView tv_MTIME;
     private MuistutusData Muget;
     private MekaDataBase mekget;
-
-
+    private String timem;
+    private String startdate;
+    private String medname;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -41,15 +47,16 @@ public class CalendarActivity_View extends AppCompatActivity {
         int position = Integer.parseInt(pos);
         MuistutusData muistutus = arrayList.get(position);
 
-        String medname = muistutus.getMedName();
-        String startdate = muistutus.getStartDate();
-        String timem = muistutus.getTime();
+        medname = muistutus.getMedName();
+        startdate = muistutus.getStartDate();
+        timem = muistutus.getTime();
 
             tv_MEDnimi.setText(medname);
             tv_MuistutusSPAIVA.setText(startdate);
             tv_MTIME.setText(timem);
             Muget = muistutus;
             mekget = muistdata;
+
     }
     public void btn_calendar_Delete (View view){
         mekget.deleteOneM(Muget);
@@ -57,5 +64,6 @@ public class CalendarActivity_View extends AppCompatActivity {
         startActivity(intent);
         finish();
     }
+
 }
 

@@ -63,6 +63,8 @@ public class AlertReceiver extends BroadcastReceiver {
 
         Notification notification = mBuilder.build();
         notificationManager.notify(id, notification);
+
     }
+
 
 }

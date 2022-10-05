@@ -26,7 +26,7 @@
     <Button
         android:id="@+id/btn_addToCalendar"
         android:layout_width="160dp"
-        android:layout_height="40dp"
+        android:layout_height="48dp"
         android:layout_marginTop="44dp"
         android:background="@drawable/custom_buttons"
         android:backgroundTint="@color/teal_700"

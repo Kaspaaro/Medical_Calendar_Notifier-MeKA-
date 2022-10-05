@@ -3,6 +3,7 @@ package com.example.mekaproj;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.app.AlarmManager;
 import android.app.DatePickerDialog;
 import android.app.PendingIntent;
@@ -16,6 +17,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
 
@@ -32,20 +34,21 @@ import java.util.Random;
  * @author Semen Morozov
  */
 public class MekaMuistutus extends AppCompatActivity {
-    private static final String TAG = "MekaMuistutus";
+
     String timeTonotify;
     Button btnSDate, btnTime;
     EditText medicineNAME;
+
     private String setStartingdate;
     private String settime;
     private Calendar calendar;
     private String originaldatetext;
     private String originaltimetext;
 
+
     //GENERATES RANDOM NUMBERS FOR NOTIFICATION ID //SO THE CHANCES TO HIT THE SAME ID ARE 0.00001%
     Random random = new Random();
     private int id = random.nextInt();
-
     // buttons activation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -148,11 +151,15 @@ public class MekaMuistutus extends AppCompatActivity {
             muistutusData = new MuistutusData(0,"ERROR","ERROR","ERROR");
 
         }
+
         if (medname.isEmpty()) {
             Toast.makeText(getApplicationContext(), "Please Enter text", Toast.LENGTH_SHORT).show();   //shows the toast if input field is empty
+
         } else {
+
             if (time.equals(originaltimetext) || date.equals(originaldatetext)) {                                               //shows toast if date and time are not selected
                 Toast.makeText(getApplicationContext(), "Please select date and time", Toast.LENGTH_SHORT).show();
+
             } else {
                 setAlarm(medicineNAME.getText().toString(),setStartingdate,settime);
                 MekaDataBase mekaDataBase = new MekaDataBase(MekaMuistutus.this);
@@ -174,18 +181,22 @@ public class MekaMuistutus extends AppCompatActivity {
         intent.putExtra("time", date);
         intent.putExtra("date", time);
         intent.putExtra("id",id);
-
+        @SuppressLint("UnspecifiedImmutableFlag")
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), id, intent, PendingIntent.FLAG_ONE_SHOT);
         String dateandtime = date + " " + timeTonotify;
         DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
+
         try {
+
             Date date1 = formatter.parse(dateandtime);
             assert date1 != null;
             am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
             Toast.makeText(getApplicationContext(), "Reminder set"+id, Toast.LENGTH_SHORT).show();
 
         } catch (ParseException e) {
+
             e.printStackTrace();
+
         }
 
 
