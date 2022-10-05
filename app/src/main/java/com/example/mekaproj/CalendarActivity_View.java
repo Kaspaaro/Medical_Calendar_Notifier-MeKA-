@@ -2,16 +2,13 @@ package com.example.mekaproj;
 
 import android.annotation.SuppressLint;
 
-import android.app.AlarmManager;
-import android.app.PendingIntent;
-import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 import java.util.List;
-import java.util.Random;
+
 
 /**
  *
