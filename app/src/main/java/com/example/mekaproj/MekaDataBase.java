@@ -27,12 +27,12 @@ public class MekaDataBase extends SQLiteOpenHelper{
     public static final String MUISTUTUS_TABLE = "MUISTUTUS_TABLE"; // DATABASE TABLE (WHERE COLUMNS GO INTO)
     public static final String COLUMN_MUISTUTUS_SPAIVA = "MUISTUTUS_SPAIVA"; // START DAY
     public static final String COLUMN_MUISTUTUS_AIKA = "MUISTUTUS_AIKA"; // TIME
-    public static final String COLUMN_MUISTUTUS_NIMI = "MUISTUTUS_NIMI"; // NAME
+    public static final String COLUMN_MUISTUTUS_NIMI = "MUISTUTUS_NIMI"; /* NAME */
     public static final String COLUMN_ID_MUISTUTUS = "ID"; //COLUMN ID
 
 /////////////////////////////////////////////////////////////////////////////
 
-
+        ///MAINDATABASE SQLite!////
     public MekaDataBase(@Nullable Context context) {
 
         super(context, DB_NAME, null, 1);
@@ -42,6 +42,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
     //First time paivakirja database is created.
     @Override
     public void onCreate(SQLiteDatabase db) {
+
         // Creates values and database with sql code. for MUISTUTUS
         String createTableStatementMuistutus = "CREATE TABLE " + MUISTUTUS_TABLE + " (" + COLUMN_ID_MUISTUTUS + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MUISTUTUS_NIMI + " TEXT," + COLUMN_MUISTUTUS_SPAIVA + " DATE," + COLUMN_MUISTUTUS_AIKA + " TIME)";
         db.execSQL(createTableStatementMuistutus);

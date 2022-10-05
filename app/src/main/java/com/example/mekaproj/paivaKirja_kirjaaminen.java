@@ -1,7 +1,6 @@
 package com.example.mekaproj;
 
 import androidx.appcompat.app.AppCompatActivity;
-
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -17,8 +16,8 @@ import java.util.List;
 public class paivaKirja_kirjaaminen extends AppCompatActivity {
 
     //Nappi refrensit ja muut layoutin controls
-    Button btnTallennaPK;
-    EditText editTextKirje,editTextOtsikko;
+    Button btnTallennaPK;                       //Tallenna päiväkirja
+    EditText editTextKirje,editTextOtsikko;     // Edit textit,mistä löytyy kirjoitettu text joka siiretään dataan.
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -36,8 +35,8 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                ///Päivä kirjan datan kirjaaminen
-                PaivaKirjaData paivaKirjaData;
+
+                PaivaKirjaData paivaKirjaData; ///Päivä kirjan datan kirjaaminen
 
                 // Tässä testataan ensiksi että menikö arvot päiväkirjadataan tai ei, jos ei mennyt se palautta Catchin eli errorin.
                 try{
@@ -55,7 +54,7 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
                 MekaDataBase mekaDataBase = new MekaDataBase(paivaKirja_kirjaaminen.this);
 
                 //Datan lähettäminen
-                boolean success = mekaDataBase.addOnePK(paivaKirjaData);
+                mekaDataBase.addOnePK(paivaKirjaData);    //Datan lähettäminen
 
                 //Tulostaa toastin joka kertoo että arvot tallennettu databaseen.
                 Toast.makeText(paivaKirja_kirjaaminen.this,"Tallenettu",Toast.LENGTH_SHORT).show();
