@@ -9,12 +9,13 @@ public class MuistutusData {
     private String startDate;
     private String time;
     private int id;
-
-    public MuistutusData (int id,String medName, String startDate,String time) {
+    private int notifyid;
+    public MuistutusData (int id,String medName, String startDate,String time,int notifyid) {
         this.medName = medName;
         this.startDate = startDate;
         this.time = time;
         this.id = id;
+        this.notifyid = notifyid;
     }
 
     @Override
@@ -39,6 +40,11 @@ public class MuistutusData {
 
     public String getTime() {
         return time;
+    }
+
+    public int getNotifyid() {
+
+        return notifyid;
     }
 
     public void setMedName(String medName) {

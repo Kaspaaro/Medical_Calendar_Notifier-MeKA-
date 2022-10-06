@@ -41,16 +41,17 @@ public class MekaMuistutus extends AppCompatActivity {
     Button btnSDate, btnTime;
     EditText medicineNAME;
 
+    //GENERATES RANDOM NUMBERS FOR NOTIFICATION ID //SO THE CHANCES TO HIT THE SAME ID ARE 0.00001%
+    Random random = new Random();
+    private int id = random.nextInt();
+
     private String setStartingdate;
     private String settime;
     private Calendar calendar;
     private String originaldatetext;
     private String originaltimetext;
+    private Integer notifyid = id;
 
-
-    //GENERATES RANDOM NUMBERS FOR NOTIFICATION ID //SO THE CHANCES TO HIT THE SAME ID ARE 0.00001%
-    Random random = new Random();
-    private int id = random.nextInt();
     // buttons activation
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -143,14 +144,14 @@ public class MekaMuistutus extends AppCompatActivity {
         ///Muistutus datan kirjaaminen
         MuistutusData muistutusData;
         try{
-            muistutusData = new MuistutusData(-1,medicineNAME.getText().toString(),setStartingdate,settime);
+            muistutusData = new MuistutusData(-1,medicineNAME.getText().toString(),setStartingdate,settime,notifyid);
 
             Toast.makeText(MekaMuistutus.this,"Lisätty",Toast.LENGTH_SHORT).show();
 
         }catch (Exception e){
             Toast.makeText(MekaMuistutus.this,"Muistutuksen tekemine epäonnistui",Toast.LENGTH_SHORT).show();
 
-            muistutusData = new MuistutusData(0,"ERROR","ERROR","ERROR");
+            muistutusData = new MuistutusData(0,"ERROR","ERROR","ERROR",0);
 
         }
 
@@ -182,9 +183,9 @@ public class MekaMuistutus extends AppCompatActivity {
         intent.putExtra("event", text);                                                       //sending data to alarm class to create channel and notification
         intent.putExtra("time", date);
         intent.putExtra("date", time);
-        intent.putExtra("id",id);
+        intent.putExtra("id",notifyid);
         @SuppressLint("UnspecifiedImmutableFlag")
-        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), id, intent, PendingIntent.FLAG_ONE_SHOT);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), notifyid, intent, PendingIntent.FLAG_ONE_SHOT);
         String dateandtime = date + " " + timeTonotify;
         DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
 
@@ -193,7 +194,7 @@ public class MekaMuistutus extends AppCompatActivity {
             Date date1 = formatter.parse(dateandtime);
             assert date1 != null;
             am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
-            Toast.makeText(getApplicationContext(), "Reminder set"+id, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Reminder set"+notifyid, Toast.LENGTH_SHORT).show();
 
         } catch (ParseException e) {
 

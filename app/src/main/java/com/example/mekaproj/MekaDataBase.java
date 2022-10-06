@@ -32,6 +32,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
     public static final String COLUMN_MUISTUTUS_AIKA = "MUISTUTUS_AIKA"; // TIME
     public static final String COLUMN_MUISTUTUS_NIMI = "MUISTUTUS_NIMI"; /* NAME */
     public static final String COLUMN_ID_MUISTUTUS = "ID"; //COLUMN ID
+    public static final String COLUMN_NOTIFYID = "NOTIFYID"; // RANDOM GENERATED ID FOR ALARM MANAGER.
 
 /////////////////////////////////////////////////////////////////////////////
 
@@ -47,7 +48,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
     public void onCreate(SQLiteDatabase db) {
 
         // Creates values and database with sql code. for MUISTUTUS
-        String createTableStatementMuistutus = "CREATE TABLE " + MUISTUTUS_TABLE + " (" + COLUMN_ID_MUISTUTUS + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MUISTUTUS_NIMI + " TEXT," + COLUMN_MUISTUTUS_SPAIVA + " DATE," + COLUMN_MUISTUTUS_AIKA + " TIME)";
+        String createTableStatementMuistutus = "CREATE TABLE " + MUISTUTUS_TABLE + " (" + COLUMN_ID_MUISTUTUS + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_MUISTUTUS_NIMI + " TEXT," + COLUMN_MUISTUTUS_SPAIVA + " DATE," + COLUMN_MUISTUTUS_AIKA + " TIME,"+ COLUMN_NOTIFYID + " INTEGER)";
         db.execSQL(createTableStatementMuistutus);
 
         // Creates values and database with sql code. for PAIVAKIRJA
@@ -73,6 +74,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
         cv.put(COLUMN_MUISTUTUS_SPAIVA,muistutusData.getStartDate());
         cv.put(COLUMN_MUISTUTUS_AIKA,muistutusData.getTime());
         cv.put(COLUMN_MUISTUTUS_NIMI,muistutusData.getMedName());
+        cv.put(COLUMN_NOTIFYID,muistutusData.getNotifyid());
 
         long insert = db.insert(MUISTUTUS_TABLE, null, cv);
 
@@ -192,8 +194,9 @@ public class MekaDataBase extends SQLiteOpenHelper{
                 String medicineName = cursor.getString(1);
                 String sDate = cursor.getString(2);
                 String mtime = cursor.getString(3);
+                Integer notifyid = cursor.getInt(4);
 
-                MuistutusData muistutusData = new MuistutusData(muistutusId,medicineName,sDate,mtime);
+                MuistutusData muistutusData = new MuistutusData(muistutusId,medicineName,sDate,mtime,notifyid);
 
                 returnListm.add(muistutusData);
 

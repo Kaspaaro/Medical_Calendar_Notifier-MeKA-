@@ -46,12 +46,12 @@ public class AlertReceiver extends BroadcastReceiver {
         mBuilder.setSmallIcon(R.drawable.logoremove);
         mBuilder.setOngoing(true);
         mBuilder.setPriority(Notification.PRIORITY_HIGH);
-        mBuilder.setOnlyAlertOnce(true);
         mBuilder.build().flags = Notification.FLAG_NO_CLEAR | Notification.PRIORITY_HIGH;
         mBuilder.setContent(contentView);
         mBuilder.setContentIntent(pendingIntent);
         mBuilder.setAutoCancel(true);
         mBuilder.setOnlyAlertOnce(true);
+
 
 
         //we have to create notification channel after api  26+

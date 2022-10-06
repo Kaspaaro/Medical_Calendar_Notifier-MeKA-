@@ -18,7 +18,6 @@ import java.util.List;
  *
  */
 public class Paivakirja_view_delete extends AppCompatActivity {
-    private static final String TAG = "Paivakirja_view_delete";
     private TextView tv_Paivakirjadatakirje;  //Kirje Textview osio mihin on kirjoitettu tarina
     private TextView tv_Paivakirjadataotsikko; //Tarinan Otsikko
     private PaivaKirjaData getpk;
