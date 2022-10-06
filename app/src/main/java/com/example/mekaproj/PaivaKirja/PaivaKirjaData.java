@@ -8,12 +8,14 @@ public class PaivaKirjaData {
     private int id;
     private String otsikko;
     private String kirje;
+    private String paiva;
     private boolean isActive; //Varmuuden vuoksi boolean tänne jotta voi checkata onko true tai false.
 
-    public PaivaKirjaData (int id,String otsikko, String kirje) {
+    public PaivaKirjaData (int id,String otsikko, String kirje,String Date) {
         this.otsikko = otsikko;
         this.kirje = kirje;
         this.id = id;
+        this.paiva = Date;
     }
 
     @Override
@@ -21,7 +23,8 @@ public class PaivaKirjaData {
     //Tallenetut Rivit Viewlist Tostring.
     public String toString() {
         return "     " +
-                otsikko + '\n'
+                otsikko + '\n' +
+                paiva + '\n'
                 ;
     }
 
@@ -38,6 +41,10 @@ public class PaivaKirjaData {
     public String getKirje() {
 
         return kirje;
+    }
+
+    public String getPaiva() {
+        return paiva;
     }
 
     public boolean isActive() {

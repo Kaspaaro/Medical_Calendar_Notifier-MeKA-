@@ -23,6 +23,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
     public static final String PAIVAKIRJA_TABLE = "PAIVAKIRJA_TABLE"; // DATABASE TABLE (WHERE COLUMNS GO INTO)
     public static final String COLUMN_PAIVAKIRJA_OTSIKKO = "PAIVAKIRJA_OTSIKKO"; // TITLE FOR PAIVAKIRJA
     public static final String COLUMN_PAIVAKIRJA_KIRJE = "PAIVAKIRJA_KIRJE"; // TEXT/STORY FOR PAIVAKIRJA
+    public static final String COLUMN_PAIVAKIRJA_PAIVA = "PAIVAKIRJA_PAIVA"; // DATE FOR PAIVAKIRJA
     public static final String COLUMN_ID = "ID"; //COLUMN ID
 
     // Muistutus database finals
@@ -52,7 +53,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
         db.execSQL(createTableStatementMuistutus);
 
         // Creates values and database with sql code. for PAIVAKIRJA
-        String createTableStatementPaivakirja = "CREATE TABLE " + PAIVAKIRJA_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PAIVAKIRJA_OTSIKKO + " TEXT," + COLUMN_PAIVAKIRJA_KIRJE + " TEXT)";
+        String createTableStatementPaivakirja = "CREATE TABLE " + PAIVAKIRJA_TABLE + " (" + COLUMN_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " + COLUMN_PAIVAKIRJA_OTSIKKO + " TEXT," + COLUMN_PAIVAKIRJA_KIRJE + " TEXT," + COLUMN_PAIVAKIRJA_PAIVA + " DATE)";
         db.execSQL(createTableStatementPaivakirja);
     }
 
@@ -99,7 +100,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
         cv.put(COLUMN_PAIVAKIRJA_OTSIKKO,paivaKirjaData.getOtsikko()); // Here were writing column_paivakirjaOtsikko that we will get with getOtsikko from paivakirjadata
         cv.put(COLUMN_PAIVAKIRJA_KIRJE,paivaKirjaData.getKirje()); // Here were writing column_paivakirjaKirje that we will get with getKirje from paivakirjadata
-
+        cv.put(COLUMN_PAIVAKIRJA_PAIVA,paivaKirjaData.getPaiva());
         long insert = db.insert(PAIVAKIRJA_TABLE, null, cv);
 
         // if insert is -1 it returns a false if its something else it returns true.
@@ -157,7 +158,9 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
                 String paivakirjaKirje = cursor.getString(2);
 
-                PaivaKirjaData paivaKirjaData = new PaivaKirjaData(paivakirjaid,paivakirjaOtsikko,paivakirjaKirje);
+                String paivakirjaPaiva = cursor.getString(3);
+
+                PaivaKirjaData paivaKirjaData = new PaivaKirjaData(paivakirjaid,paivakirjaOtsikko,paivakirjaKirje,paivakirjaPaiva);
 
                 returnList.add(paivaKirjaData);
 

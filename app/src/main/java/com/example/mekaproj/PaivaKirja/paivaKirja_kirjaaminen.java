@@ -11,6 +11,10 @@ import android.widget.Toast;
 import com.example.mekaproj.MekaDataBase;
 import com.example.mekaproj.*;
 
+import java.text.SimpleDateFormat;
+import java.util.Calendar;
+import java.util.Date;
+
 /**
  *
  * @author Kaspar Tullus
@@ -20,11 +24,15 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
     //Nappi refrensit ja muut layoutin controls
     Button btnTallennaPK;                       //Tallenna päiväkirja
     EditText editTextKirje,editTextOtsikko;     // Edit textit,mistä löytyy kirjoitettu text joka siiretään dataan.
-
+    private String paivakirjaPaiva;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paiva_kirja_kirjaaminen);
+
+        // Getting the current date for päiväkirja.
+        SimpleDateFormat sdf = new SimpleDateFormat("dd/MM/yyyy");
+        paivakirjaPaiva = sdf.format(new Date());
 
         //Napit + Tekstikentät.
         btnTallennaPK = findViewById(R.id.btnTallennaPK);
@@ -42,14 +50,14 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
 
                 // Tässä testataan ensiksi että menikö arvot päiväkirjadataan tai ei, jos ei mennyt se palautta Catchin eli errorin.
                 try{
-                    paivaKirjaData = new PaivaKirjaData(-1,editTextOtsikko.getText().toString(),editTextKirje.getText().toString());
+                    paivaKirjaData = new PaivaKirjaData(-1,editTextOtsikko.getText().toString(),editTextKirje.getText().toString(),paivakirjaPaiva);
 
                     Toast.makeText(paivaKirja_kirjaaminen.this,"Tallennettu",Toast.LENGTH_SHORT).show();
 
                 }catch (Exception e){
                     Toast.makeText(paivaKirja_kirjaaminen.this,"Paivakirjan tekemine epäonnistui",Toast.LENGTH_SHORT).show();
 
-                    paivaKirjaData = new PaivaKirjaData(0,"ERROR","ERROR");
+                    paivaKirjaData = new PaivaKirjaData(0,"ERROR","ERROR","ERROR");
 
                 }
 
@@ -64,7 +72,7 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
                 //Vie suoraan PaivaKirjaData_Displayer activitiin.
                 Intent intent = new Intent(paivaKirja_kirjaaminen.this, PaivaKirjaData_Displayer.class);
                 startActivity(intent);
-
+                finish();
 
             }
 

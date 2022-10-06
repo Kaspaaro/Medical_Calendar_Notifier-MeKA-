@@ -194,7 +194,7 @@ public class MekaMuistutus extends AppCompatActivity {
             Date date1 = formatter.parse(dateandtime);
             assert date1 != null;
             am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
-            Toast.makeText(getApplicationContext(), "Reminder set"+notifyid, Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Muistutus Lisätty", Toast.LENGTH_SHORT).show();
 
         } catch (ParseException e) {
 
