@@ -12,7 +12,7 @@ import android.widget.TextView;
 import androidx.appcompat.app.AppCompatActivity;
 
 import com.example.mekaproj.MekaDataBase;
-import com.example.mekaproj.R;
+import com.example.mekaproj.*;
 
 import java.util.List;
 

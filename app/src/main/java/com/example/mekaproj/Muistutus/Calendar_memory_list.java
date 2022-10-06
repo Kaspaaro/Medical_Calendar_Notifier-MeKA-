@@ -10,7 +10,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.example.mekaproj.MekaDataBase;
-import com.example.mekaproj.R;
+import com.example.mekaproj.*;
 
 import java.util.List;
 

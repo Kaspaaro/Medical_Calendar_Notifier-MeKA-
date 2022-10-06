@@ -9,7 +9,7 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 import com.example.mekaproj.MekaDataBase;
-import com.example.mekaproj.R;
+import com.example.mekaproj.*;
 
 /**
  *

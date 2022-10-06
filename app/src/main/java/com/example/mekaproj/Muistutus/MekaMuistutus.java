@@ -21,7 +21,7 @@ import android.widget.TimePicker;
 import android.widget.Toast;
 
 import com.example.mekaproj.MekaDataBase;
-import com.example.mekaproj.R;
+import com.example.mekaproj.*;
 
 import java.text.DateFormat;
 import java.text.ParseException;

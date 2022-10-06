@@ -13,7 +13,7 @@ import android.os.Bundle;
 import android.widget.RemoteViews;
 import androidx.core.app.NotificationCompat;
 
-import com.example.mekaproj.R;
+import com.example.mekaproj.*;
 
 /**
  *
