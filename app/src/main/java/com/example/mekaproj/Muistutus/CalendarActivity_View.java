@@ -2,6 +2,9 @@ package com.example.mekaproj.Muistutus;
 
 import android.annotation.SuppressLint;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
@@ -28,6 +31,7 @@ public class CalendarActivity_View extends AppCompatActivity  {
     private String timem;
     private String startdate;
     private String medname;
+    private Integer notifyid;
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -51,6 +55,7 @@ public class CalendarActivity_View extends AppCompatActivity  {
         medname = muistutus.getMedName();
         startdate = muistutus.getStartDate();
         timem = muistutus.getTime();
+        notifyid = muistutus.getNotifyid();
 
             tv_MEDnimi.setText(medname);
             tv_MuistutusSPAIVA.setText(startdate);
@@ -60,6 +65,14 @@ public class CalendarActivity_View extends AppCompatActivity  {
 
     }
     public void btn_calendar_Delete (View view){
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
+
+        Intent intent2 = new Intent(getApplicationContext(), AlertReceiver.class);
+        intent2.putExtra("id", notifyid);
+        PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), notifyid, intent2, PendingIntent.FLAG_ONE_SHOT);
+
+        am.cancel(pendingIntent);
+
         mekget.deleteOneM(Muget);
         Intent intent = new Intent(CalendarActivity_View.this, Calendar_memory_list.class);
         startActivity(intent);
