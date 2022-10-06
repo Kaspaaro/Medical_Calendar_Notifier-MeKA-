@@ -1,4 +1,4 @@
-package com.example.mekaproj;
+package com.example.mekaproj.PaivaKirja;
 /**
  *
  * @author Kaspar Tullus

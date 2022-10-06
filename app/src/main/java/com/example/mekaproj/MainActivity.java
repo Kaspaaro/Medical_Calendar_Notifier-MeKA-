@@ -11,11 +11,14 @@ import android.app.AlertDialog;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.pm.PackageManager;
-import android.content.res.Configuration;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.TextView;
 import android.widget.Toast;
+
+import com.example.mekaproj.Muistutus.Calendar_memory_list;
+import com.example.mekaproj.Muistutus.MekaMuistutus;
+import com.example.mekaproj.PaivaKirja.PaivaKirjaData_Displayer;
+import com.example.mekaproj.PaivaKirja.paivaKirja_kirjaaminen;
 
 /**
  *

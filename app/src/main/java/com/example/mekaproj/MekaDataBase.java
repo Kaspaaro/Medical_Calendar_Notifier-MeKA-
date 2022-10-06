@@ -7,6 +7,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import androidx.annotation.Nullable;
 
+import com.example.mekaproj.Muistutus.MuistutusData;
+import com.example.mekaproj.PaivaKirja.PaivaKirjaData;
+
 import java.util.ArrayList;
 import java.util.List;
 /**

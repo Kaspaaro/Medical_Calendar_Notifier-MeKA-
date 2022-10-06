@@ -1,4 +1,4 @@
-package com.example.mekaproj;
+package com.example.mekaproj.Muistutus;
 
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -17,9 +17,11 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.DatePicker;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.TimePicker;
 import android.widget.Toast;
+
+import com.example.mekaproj.MekaDataBase;
+import com.example.mekaproj.R;
 
 import java.text.DateFormat;
 import java.text.ParseException;

@@ -1,4 +1,4 @@
-package com.example.mekaproj;
+package com.example.mekaproj.Muistutus;
 
 import android.annotation.SuppressLint;
 import android.app.Notification;
@@ -12,6 +12,8 @@ import android.os.Build;
 import android.os.Bundle;
 import android.widget.RemoteViews;
 import androidx.core.app.NotificationCompat;
+
+import com.example.mekaproj.R;
 
 /**
  *

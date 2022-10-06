@@ -32,39 +32,39 @@
 
 
         <activity
-            android:name=".Calendar_memory_list"
+            android:name=".Muistutus.Calendar_memory_list"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".Paivakirja_view_delete"
+            android:name=".PaivaKirja.Paivakirja_view_delete"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".PaivaKirjaData_Displayer"
+            android:name=".PaivaKirja.PaivaKirjaData_Displayer"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
         <activity
-            android:name=".paivaKirja_kirjaaminen"
+            android:name=".PaivaKirja.paivaKirja_kirjaaminen"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
                 android:value="" />
         </activity>
 
-        <activity android:name=".MekaMuistutus" />
+        <activity android:name=".Muistutus.MekaMuistutus" />
 
-        <activity android:name=".CalendarActivity_View" />
+        <activity android:name=".Muistutus.CalendarActivity_View" />
 
-        <receiver android:name=".AlertReceiver"/>
+        <receiver android:name=".Muistutus.AlertReceiver"/>
     </application>
 
 </manifest>

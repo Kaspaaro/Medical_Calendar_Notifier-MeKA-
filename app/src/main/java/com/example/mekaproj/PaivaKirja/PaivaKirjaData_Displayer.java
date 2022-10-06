@@ -1,4 +1,4 @@
-package com.example.mekaproj;
+package com.example.mekaproj.PaivaKirja;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,6 +8,9 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
+
+import com.example.mekaproj.MekaDataBase;
+import com.example.mekaproj.R;
 
 import java.util.List;
 

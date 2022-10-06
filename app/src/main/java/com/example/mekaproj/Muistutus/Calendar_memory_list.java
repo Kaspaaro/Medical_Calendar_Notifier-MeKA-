@@ -1,4 +1,4 @@
-package com.example.mekaproj;
+package com.example.mekaproj.Muistutus;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -9,9 +9,15 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
+import com.example.mekaproj.MekaDataBase;
+import com.example.mekaproj.R;
+
 import java.util.List;
 
-/* @Kaspar Tullus*/
+/**
+ *
+ * @author Kaspar Tullus
+ */
 public class Calendar_memory_list extends AppCompatActivity {
     private ListView lv_Muistutusdata;
     ArrayAdapter MuistiArrayAdapter;

@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:background="@drawable/pill"
 
-    tools:context=".PaivaKirjaData_Displayer">
+    tools:context=".PaivaKirja.PaivaKirjaData_Displayer">
 
     <ListView
         android:id="@+id/pkDATADISPLAY"
