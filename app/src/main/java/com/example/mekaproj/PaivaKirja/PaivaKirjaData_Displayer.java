@@ -55,8 +55,10 @@ public class PaivaKirjaData_Displayer extends AppCompatActivity {
                 intent.putExtra("POSITION",String.valueOf(position));
 
                 startActivity(intent);
+                finish();
 
             }
+
         });
     }
 
