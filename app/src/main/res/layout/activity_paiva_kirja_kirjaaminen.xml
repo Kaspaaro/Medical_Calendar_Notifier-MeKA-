@@ -11,11 +11,12 @@
         android:id="@+id/editTextOtsikko"
         android:layout_width="417dp"
         android:layout_height="54dp"
+        android:layout_marginBottom="5dp"
         android:ems="10"
+        android:hint="@string/paivakirja"
         android:inputType="textPersonName"
         android:textAlignment="center"
         android:textSize="24sp"
-        android:hint="@string/paivakirja"
         app:layout_constraintBottom_toTopOf="@+id/guideline7"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
@@ -31,7 +32,7 @@
         android:id="@+id/btnTallennaPK"
         android:layout_width="210dp"
         android:layout_height="45dp"
-        android:layout_marginBottom="52dp"
+        android:layout_marginTop="15dp"
         android:background="@drawable/custom_buttons"
         android:onClick="btnSavePK"
         android:text="Tallenna"
@@ -40,12 +41,15 @@
         app:layout_constraintHorizontal_bias="0.497"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/editTextKirje"
-        app:layout_constraintVertical_bias="0.16" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <EditText
         android:id="@+id/editTextKirje"
-        android:layout_width="390dp"
-        android:layout_height="476dp"
+        android:layout_width="399dp"
+        android:layout_height="427dp"
+        android:layout_marginStart="5dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginEnd="5dp"
         android:background="#99141414"
         android:backgroundTint="#FFFFFF"
         android:ems="10"
