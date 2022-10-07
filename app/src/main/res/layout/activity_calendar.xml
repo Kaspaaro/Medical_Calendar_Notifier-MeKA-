@@ -15,11 +15,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="128dp"
+        android:background="@drawable/custom_buttons"
         android:backgroundTint="@color/teal_700"
         android:hint="@string/time"
         android:onClick="btn_calendar_Delete"
-        android:text="DELETE"
-        android:background="@drawable/custom_buttons"
+        android:text="@string/Poista1"
 
 
         app:layout_constraintBottom_toBottomOf="parent"

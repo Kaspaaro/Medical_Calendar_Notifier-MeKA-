@@ -156,7 +156,7 @@ public class MekaMuistutus extends AppCompatActivity {
         }
 
         if (medname.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Please Enter text", Toast.LENGTH_SHORT).show();   //shows the toast if input field is empty
+            Toast.makeText(getApplicationContext(), "Valitse päivä ja aika.", Toast.LENGTH_SHORT).show();   //shows the toast if input field is empty
 
         } else {
 

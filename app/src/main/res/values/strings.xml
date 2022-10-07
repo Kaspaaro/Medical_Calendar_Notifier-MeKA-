@@ -9,4 +9,11 @@
     <string name="time">enter a time</string>
     <string name="textview">Take care of your health</string>
     <string name="paivakirja">Kirjoita otsikko</string>
+    <string name="Poista">Poista</string>
+    <string name="Poista1">POISTA</string>
+    <string name="Päivämäärä">Valitse Päivä</string>
+    <string name="ValitseAika">Valitse Aika</string>
+    <string name="tallenna1">TALLENNA</string>
+    <string name="Lisäänimi">Kirjoita Lääkeen Nimi</string>
+    <string name="tallennimi">Kirjoita Lääkkeen Nimi</string>
 </resources>

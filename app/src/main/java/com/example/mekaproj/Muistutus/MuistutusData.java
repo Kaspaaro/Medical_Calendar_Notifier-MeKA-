@@ -21,9 +21,9 @@ public class MuistutusData {
     @Override
     public String toString() {
         return
-                "Medicine: " + medName + '\n' +
-                "Start: " + startDate + '\n' +
-                "Time: " + time + '\n' ;
+                "Lääke: " + medName + '\n' +
+                "Päivä: " + startDate + '\n' +
+                "Aika: " + time + '\n' ;
     }
 
     public int getIdM() {
