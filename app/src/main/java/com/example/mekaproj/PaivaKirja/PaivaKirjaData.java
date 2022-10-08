@@ -5,12 +5,13 @@ package com.example.mekaproj.PaivaKirja;
  *
  */
 public class PaivaKirjaData {
-    private int id;
-    private String otsikko;
-    private String kirje;
-    private String paiva;
-    private boolean isActive; //Varmuuden vuoksi boolean tänne jotta voi checkata onko true tai false.
 
+    private int id; // Database row id
+    private String otsikko; // Database Header text
+    private String kirje; // Database "kirje" text
+    private String paiva; // Database date text
+
+    // Info from the database is sent into here and returned to other classes that call the methods.
     public PaivaKirjaData (int id,String otsikko, String kirje,String Date) {
         this.otsikko = otsikko;
         this.kirje = kirje;
@@ -20,7 +21,7 @@ public class PaivaKirjaData {
 
     @Override
 
-    //Tallenetut Rivit Viewlist Tostring.
+    //Saved viewlist rows text.
     public String toString() {
         return "     " +
                 otsikko + '\n' +
@@ -28,7 +29,7 @@ public class PaivaKirjaData {
                 ;
     }
 
-    // Getterit ja Setterit!
+    // Getters and Setters
     public Integer getID(){
 
         return id;
@@ -47,9 +48,6 @@ public class PaivaKirjaData {
         return paiva;
     }
 
-    public boolean isActive() {
-        return isActive;
-    }
 
     public void setOtsikko(String otsikko) {
         this.otsikko = otsikko;
@@ -59,8 +57,5 @@ public class PaivaKirjaData {
         this.kirje = kirje;
     }
 
-    public void setActive(boolean active) {
-        isActive = active;
-    }
     ////////
 }

@@ -52,13 +52,13 @@ public class MekaMuistutus extends AppCompatActivity {
     private String originaltimetext;
     private Integer notifyid = id;
 
-    // buttons activation
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_meka_muistutus);
 
-        //Buttons findbyid on activity
+        //Buttons findbyid
         btnSDate = findViewById(R.id.btn_date);
         btnTime= findViewById(R.id.btn_time);
         medicineNAME =  findViewById(R.id.editTextMedicine);
@@ -82,7 +82,7 @@ public class MekaMuistutus extends AppCompatActivity {
 
     }
 
-    //pick Date value
+    //Pick Date
 
     private void setDate() {
         calendar = Calendar.getInstance();
@@ -103,21 +103,23 @@ public class MekaMuistutus extends AppCompatActivity {
         datePickerDialog.show();
     }
 
-    //pick time value
+    //Pick Time
 
     private void setTime(){
 
         Calendar calendar = Calendar.getInstance();
-        int hour=calendar.get(Calendar.HOUR);
+        int hour=calendar.get(Calendar.HOUR_OF_DAY);
         int min=calendar.get(Calendar.MINUTE);
         boolean is24HoursView=true;
 
         TimePickerDialog timePickerDialog = new TimePickerDialog(this, android.R.style.Theme_Holo_Light_Dialog, new TimePickerDialog.OnTimeSetListener() {
+
             @Override
             public void onTimeSet(TimePicker view, int hour, int min) {
+
                 timeTonotify = hour + ":" + min;
                 Calendar calendar1 = Calendar.getInstance();
-                calendar1.set(Calendar.HOUR,hour);
+                calendar1.set(Calendar.HOUR_OF_DAY,hour);
                 calendar1.set(Calendar.MINUTE,min);
                 updatetimeTEXT(calendar1);
                 btnTime.setText(settime);
@@ -127,6 +129,7 @@ public class MekaMuistutus extends AppCompatActivity {
         timePickerDialog.getWindow().setBackgroundDrawable(new ColorDrawable(Color.TRANSPARENT));
         timePickerDialog.show();
     }
+
     public void updatetimeTEXT(Calendar calendar1){
         String timetext;
         timetext = DateFormat.getTimeInstance(DateFormat.SHORT).format(calendar1.getTime());
@@ -137,14 +140,14 @@ public class MekaMuistutus extends AppCompatActivity {
     //send data to the Calendar activity page
     public void btn_addToCalendar(View v) {
 
-        String medname = medicineNAME.getText().toString().trim();                               //access the data form the input field
-        String date = btnSDate.getText().toString().trim();                                 //access the date form the choose date button
-        String time = btnTime.getText().toString().trim();
+        String medname = medicineNAME.getText().toString().trim();         //access the data form the input field
+        String date = btnSDate.getText().toString().trim();          //access the date from the choose date button
+        String time = btnTime.getText().toString();   //access time from the choose time button
 
-        ///Muistutus datan kirjaaminen
+        ///Adding Muistutus Data (Notification Data and Database data)
         MuistutusData muistutusData;
         try{
-            muistutusData = new MuistutusData(-1,medicineNAME.getText().toString(),setStartingdate,settime,notifyid);
+            muistutusData = new MuistutusData(-1,medname,date,time,notifyid);
 
             Toast.makeText(MekaMuistutus.this,"Lisätty",Toast.LENGTH_SHORT).show();
 
@@ -155,13 +158,17 @@ public class MekaMuistutus extends AppCompatActivity {
 
         }
 
+        // Here we check if all fields are filled out,if not we tell the user "Valitse päivä ja aika" or "Kirjoita lääkkeen nimi"
+
         if (medname.isEmpty()) {
-            Toast.makeText(getApplicationContext(), "Valitse päivä ja aika.", Toast.LENGTH_SHORT).show();   //shows the toast if input field is empty
+
+            // if medicine name field is empty we tell him do fill it.
+            Toast.makeText(getApplicationContext(), "Kirjoita lääkeen nimi.", Toast.LENGTH_SHORT).show();   //shows the toast if input Lääkeen nimi is empty
 
         } else {
 
-            if (time.equals(originaltimetext) || date.equals(originaldatetext)) {                                               //shows toast if date and time are not selected
-                Toast.makeText(getApplicationContext(), "Please select date and time", Toast.LENGTH_SHORT).show();
+            if (time.equals(originaltimetext) || date.equals(originaldatetext)) {         //shows toast if date and time are not selected
+                Toast.makeText(getApplicationContext(), "Valitse päivä ja aika.", Toast.LENGTH_SHORT).show();
 
             } else {
                 setAlarm(medicineNAME.getText().toString(),setStartingdate,settime);
@@ -176,23 +183,30 @@ public class MekaMuistutus extends AppCompatActivity {
 
 
     }
+
+    // Here we set the alarm for AlarmManager that will notify us on the right time.
     private void setAlarm(String text, String date, String time) {
-        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);                   //assigining alaram manager object to set alaram
+        AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);     //assigining alaram manager object to set alaram
 
         Intent intent = new Intent(getApplicationContext(), AlertReceiver.class);
-        intent.putExtra("event", text);                                                       //sending data to alarm class to create channel and notification
+
+        //sending data to alarm class to create channel and notification
+        intent.putExtra("event", text);
         intent.putExtra("time", date);
         intent.putExtra("date", time);
         intent.putExtra("id",notifyid);
+
+        //Sending infromation trough pending intent into alertreciver.
         @SuppressLint("UnspecifiedImmutableFlag")
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), notifyid, intent, PendingIntent.FLAG_ONE_SHOT);
+
+        //Formatting the Date
         String dateandtime = date + " " + timeTonotify;
         DateFormat formatter = new SimpleDateFormat("d-M-yyyy hh:mm");
 
         try {
 
             Date date1 = formatter.parse(dateandtime);
-            assert date1 != null;
             am.set(AlarmManager.RTC_WAKEUP, date1.getTime(), pendingIntent);
             Toast.makeText(getApplicationContext(), "Muistutus Lisätty", Toast.LENGTH_SHORT).show();
 

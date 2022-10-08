@@ -19,33 +19,38 @@ import java.util.List;
  * @author Kaspar Tullus
  */
 public class Calendar_memory_list extends AppCompatActivity {
+
+    //All we need for listview creation and data fetching.
     private ListView lv_Muistutusdata;
     ArrayAdapter MuistiArrayAdapter;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_memory_list);
 
-        //Tämä Näyttää Tallennetut rivit databasesta view listalle
+        //This will show saved rows into the viewlist from database.
         lv_Muistutusdata = findViewById(R.id.list_Memo_Calendar);
         MekaDataBase mekaDataBase = new MekaDataBase(Calendar_memory_list.this);
+        List<MuistutusData> everything = mekaDataBase.getMuitsAll();  // This will get all data from Muistilista Table.
 
-        List<MuistutusData> everything = mekaDataBase.getMuitsAll();
-
+        // Viewlist creation
         MuistiArrayAdapter = new ArrayAdapter<>(Calendar_memory_list.this, android.R.layout.simple_list_item_1, everything);
-
         lv_Muistutusdata.setAdapter(MuistiArrayAdapter);
 
+        // This will send the user into the CalendarActivity_view activity, to read the data he made and to remove it.
         lv_Muistutusdata.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-            //Lähettää tiedot luettavaksi "CalendarActivity_viewlle."
+
+            //Sends the information to CalendarActivity_view,so it can write the data into that activity.
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
                 Intent intent = new Intent(Calendar_memory_list.this, CalendarActivity_View.class);
                 intent.putExtra("POSITIONM",String.valueOf(position));
-
                 startActivity(intent);
+
+                //Finishes the activity so the return button will send the user back to Mainactivity
                 finish();
             }
         });

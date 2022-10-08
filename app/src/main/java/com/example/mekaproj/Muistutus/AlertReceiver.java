@@ -22,6 +22,7 @@ import com.example.mekaproj.*;
 public class AlertReceiver extends BroadcastReceiver {
     @Override
     public void onReceive(Context context, Intent intent) {
+
         Bundle bundle = intent.getExtras();
         String text = bundle.getString("event");
         String date = bundle.getString("date") + "\n " + bundle.getString("time");
@@ -29,7 +30,7 @@ public class AlertReceiver extends BroadcastReceiver {
 
         //Click on Notification
         Intent intent1 = new Intent(context, Calendar_memory_list.class);
-        intent1.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+
         //Notification Builder
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
         NotificationCompat.Builder mBuilder = new NotificationCompat.Builder(context, Integer.toString(id));

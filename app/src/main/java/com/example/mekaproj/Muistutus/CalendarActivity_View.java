@@ -23,6 +23,8 @@ import java.util.List;
  */
 
 public class CalendarActivity_View extends AppCompatActivity  {
+
+    // Setting the properties needed to name the textviews on the activity.
     private TextView tv_MuistutusSPAIVA;
     private TextView tv_MEDnimi;
     private TextView tv_MTIME;
@@ -32,6 +34,8 @@ public class CalendarActivity_View extends AppCompatActivity  {
     private String startdate;
     private String medname;
     private Integer notifyid;
+
+    // Creates Header text and "kirje" text into activity so the user can read the Diary(Päiväkirja) He/she/unknown created.
     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,20 +47,25 @@ public class CalendarActivity_View extends AppCompatActivity  {
             tv_MEDnimi = findViewById(R.id.editTextNAMEMED);
             tv_MTIME = findViewById(R.id.timeTxt);
 
+            //Getting the database
         MekaDataBase muistdata = new MekaDataBase(CalendarActivity_View.this);
-        List<MuistutusData> arrayList = muistdata.getMuitsAll();
+        List<MuistutusData> arrayList = muistdata.getMuitsAll(); // Getting the whole Muistutus table from database.
 
+        //Getting the intent that was sent to us from "Calendar_memory_list" class. (Fetching the info from intent)
         Intent intent = getIntent();
         String pos = intent.getStringExtra("POSITIONM");
 
+        // getting the position on the clicked item,wich can be used inside data base to indentify the row id. wich the clicked data is stored.
         int position = Integer.parseInt(pos);
         MuistutusData muistutus = arrayList.get(position);
 
+        //Getting the database info with the methods from "Muistutus Data" class
         medname = muistutus.getMedName();
         startdate = muistutus.getStartDate();
         timem = muistutus.getTime();
         notifyid = muistutus.getNotifyid();
 
+        //Setting the text into the activity with fetched info from database.
             tv_MEDnimi.setText(medname);
             tv_MuistutusSPAIVA.setText(startdate);
             tv_MTIME.setText(timem);
@@ -64,18 +73,24 @@ public class CalendarActivity_View extends AppCompatActivity  {
             mekget = muistdata;
 
     }
+    // Removes the "Muistutus"(Notification) also removes it from the AlarmManage,wich means the notification wont pop up and the notification channel will be deleted from the memory.
     public void btn_calendar_Delete (View view){
         AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
+        // Here we get the AlertReceiver class and tell it to cancel the Notification in AlarmManager.
         Intent intent2 = new Intent(getApplicationContext(), AlertReceiver.class);
         intent2.putExtra("id", notifyid);
         PendingIntent pendingIntent = PendingIntent.getBroadcast(getApplicationContext(), notifyid, intent2, PendingIntent.FLAG_ONE_SHOT);
 
+        // Canceling the notification.
         am.cancel(pendingIntent);
 
+        // Deleting the data from the database.
         mekget.deleteOneM(Muget);
         Intent intent = new Intent(CalendarActivity_View.this, Calendar_memory_list.class);
         startActivity(intent);
+
+        //Finishing the activity so u cant return to the old saved item you selected,because u just deleted it.
         finish();
     }
 
