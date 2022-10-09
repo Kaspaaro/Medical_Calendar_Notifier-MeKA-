@@ -25,18 +25,35 @@ import java.util.List;
 public class CalendarActivity_View extends AppCompatActivity  {
 
     // Setting the properties needed to name the textviews on the activity.
+    /**Textview for Date*/
     private TextView tv_MuistutusSPAIVA;
+
+    /**Textview for Medicine Name*/
     private TextView tv_MEDnimi;
+
+    /**Textview for Time*/
     private TextView tv_MTIME;
+
+    /**For getting inputs to fetch from database*/
     private MuistutusData Muget;
+
+    /**For getting Information from DataBase, with the help of "MuistutusData Muget"*/
     private MekaDataBase mekget;
+
+    /**Time taken from MuistutusData*/
     private String timem;
+
+    /**Date taken from MuistutusData*/
     private String startdate;
+
+    /**Medicine name taken from MuistutusData*/
     private String medname;
+
+    /**Notificantion ID integer from MuistutusData,used for AlarmManager Data*/
     private Integer notifyid;
 
-    // Creates Header text and "kirje" text into activity so the user can read the Diary(Päiväkirja) He/she/unknown created.
-    @SuppressLint("MissingInflatedId")
+    /**Gets Medicine name text and Date/Time text into activity so the user can read the Notification(Muistutus) He/she/unknown created.*/
+     @SuppressLint("MissingInflatedId")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,8 +90,9 @@ public class CalendarActivity_View extends AppCompatActivity  {
             mekget = muistdata;
 
     }
-    // Removes the "Muistutus"(Notification) also removes it from the AlarmManage,wich means the notification wont pop up and the notification channel will be deleted from the memory.
-    public void btn_calendar_Delete (View view){
+
+    /**Removes the "Muistutus"(Notification) also removes it from the AlarmManage,wich means the notification wont pop up and the notification channel will be deleted from the memory.*/
+     public void btn_calendar_Delete (View view){
         AlarmManager am = (AlarmManager) getSystemService(Context.ALARM_SERVICE);
 
         // Here we get the AlertReceiver class and tell it to cancel the Notification in AlarmManager.
