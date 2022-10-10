@@ -7,7 +7,6 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import com.example.mekaproj.MainActivity;
 import com.example.mekaproj.MekaDataBase;
 import com.example.mekaproj.*;
 
