@@ -27,6 +27,7 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
 
     /**we use these to save the input into database*/
     EditText editTextKirje,editTextOtsikko;
+    /**The Date input,we use this to save the inputted date*/
     private String paivakirjaPaiva;
     @Override
     /**Here we create the database with the inputted data given by the user*/
