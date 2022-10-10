@@ -17,12 +17,15 @@ import java.util.List;
  * @author Kaspar Tullus
  *
  */
+/**here we create the view for clicked object of listview*/
 public class Paivakirja_view_delete extends AppCompatActivity {
     private TextView tv_Paivakirjadatakirje;  //Kirje Textview osio mihin on kirjoitettu tarina
     private TextView tv_Paivakirjadataotsikko; //Tarinan Otsikko
     private PaivaKirjaData getpk;
     private MekaDataBase getdb;
     @Override
+
+    /**Here we create infromation on screen for the clicked object,that was clicked in the list*/
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paivakirja_view_delete);
@@ -44,6 +47,7 @@ public class Paivakirja_view_delete extends AppCompatActivity {
         getpk = paivakirja;
         getdb = pkdata;
     }
+    /**When this is pressed the data is deleted from the database*/
     public void btn_Delete_View (View view){
         getdb.deleteOne(getpk);
         Intent intent = new Intent(Paivakirja_view_delete.this, PaivaKirjaData_Displayer.class);

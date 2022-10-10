@@ -19,13 +19,18 @@ import java.util.List;
  * @author Kaspar Tullus
  *
  */
+/**We use this to display the database data into the viewlist*/
 public class PaivaKirjaData_Displayer extends AppCompatActivity {
 
     ///Refrenssit
+    /**This is the listview for the data */
     private ListView lv_Paivakirjadata;
+
+    /**This is the object in the listview*/
     ArrayAdapter PaivakirjaArrayAdapter;
 
     @Override
+    /**Here we create the whole Listview that is clickable*/
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paiva_kirja_data_displayer);
@@ -34,6 +39,7 @@ public class PaivaKirjaData_Displayer extends AppCompatActivity {
         lv_Paivakirjadata = findViewById(R.id.pkDATADISPLAY);
 
         MekaDataBase mekaDataBase = new MekaDataBase(PaivaKirjaData_Displayer.this);
+
         //palauttaa kaiken datan SQLitesta
         List<PaivaKirjaData> everything = mekaDataBase.getEverything();
 
@@ -46,6 +52,7 @@ public class PaivaKirjaData_Displayer extends AppCompatActivity {
 
             @Override
             //Lähettää tiedot luettavaksi "Paivakirja_view_delete"
+            /**Here we send information for reading into Paivakirja_view_delete, when the user presses the object in the list.*/
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
                 /*Object obj = PaivakirjaArrayAdapter.getItem(position);

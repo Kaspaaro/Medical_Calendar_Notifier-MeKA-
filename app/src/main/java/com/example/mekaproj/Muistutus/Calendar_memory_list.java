@@ -21,10 +21,13 @@ import java.util.List;
 public class Calendar_memory_list extends AppCompatActivity {
 
     //All we need for listview creation and data fetching.
+    /**used for creating the list with this listview*/
     private ListView lv_Muistutusdata;
+    /**used for stacking up list objects*/
     ArrayAdapter MuistiArrayAdapter;
 
     @Override
+    /**This creates new list for the activity view*/
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_calendar_memory_list);
@@ -42,8 +45,9 @@ public class Calendar_memory_list extends AppCompatActivity {
         lv_Muistutusdata.setOnItemClickListener(new AdapterView.OnItemClickListener() {
 
             @Override
-
             //Sends the information to CalendarActivity_view,so it can write the data into that activity.
+            /**Sends information to CalendarActivity,so the info can be viewed by the user.
+             * @param position this finds the position of the selected row in the database.*/
             public void onItemClick(AdapterView<?> parent, View view, int position, long l) {
 
                 Intent intent = new Intent(Calendar_memory_list.this, CalendarActivity_View.class);

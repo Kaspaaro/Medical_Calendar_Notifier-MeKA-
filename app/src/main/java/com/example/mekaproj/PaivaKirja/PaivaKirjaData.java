@@ -4,6 +4,7 @@ package com.example.mekaproj.PaivaKirja;
  * @author Kaspar Tullus
  *
  */
+/**Here we send the information to the database that the user has inputed.*/
 public class PaivaKirjaData {
 
     private int id; // Database row id
@@ -12,6 +13,10 @@ public class PaivaKirjaData {
     private String paiva; // Database date text
 
     // Info from the database is sent into here and returned to other classes that call the methods.
+    /**Here we fetch the data that is returned to us from other classes,
+     * @param otsikko the header for the diary/päiväkirja
+     * @param kirje the text/story for the diary/päiväkirja
+     * @param Date the Date for the diary/päiväkirja, this is the date the diary was creeated.*/
     public PaivaKirjaData (int id,String otsikko, String kirje,String Date) {
         this.otsikko = otsikko;
         this.kirje = kirje;
@@ -22,6 +27,7 @@ public class PaivaKirjaData {
     @Override
 
     //Saved viewlist rows text.
+    /**We use this to write the right data for the Viewlist*/
     public String toString() {
         return "     " +
                 otsikko + '\n' +
@@ -29,33 +35,27 @@ public class PaivaKirjaData {
                 ;
     }
 
-    // Getters and Setters
+    // Getters
+    /**Getting and returning the row id*/
     public Integer getID(){
 
         return id;
     }
+    /**Gets and returns the Header/otsikko for the diary/päiväkirja*/
     public String getOtsikko() {
 
         return otsikko;
     }
-
+    /**Getting the Text/story of the diary/päiväkirja*/
     public String getKirje() {
 
         return kirje;
     }
-
+    /**Gets the Date/päivä when the diary was created.*/
     public String getPaiva() {
         return paiva;
     }
 
-
-    public void setOtsikko(String otsikko) {
-        this.otsikko = otsikko;
-    }
-
-    public void setKirje(String kirje) {
-        this.kirje = kirje;
-    }
 
     ////////
 }

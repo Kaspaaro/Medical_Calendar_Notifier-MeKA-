@@ -19,8 +19,12 @@ import com.example.mekaproj.*;
  *
  * @author Kaspar Tullus
  */
+
+/**Here we create the notification that will popup*/
 public class AlertReceiver extends BroadcastReceiver {
     @Override
+    /**This recives information from the created notification and builds the notificator
+     * @param intent this is the intent that was sent do us, we can use keys to fetch the information.*/
     public void onReceive(Context context, Intent intent) {
 
         Bundle bundle = intent.getExtras();

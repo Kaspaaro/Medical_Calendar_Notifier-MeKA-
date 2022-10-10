@@ -19,13 +19,17 @@ import java.util.Date;
  *
  * @author Kaspar Tullus
  */
+/**Here we create fucnctions that we use to write the diary/Päiväkirja*/
 public class paivaKirja_kirjaaminen extends AppCompatActivity {
 
-    //Nappi refrensit ja muut layoutin controls
-    Button btnTallennaPK;                       //Tallenna päiväkirja
-    EditText editTextKirje,editTextOtsikko;     // Edit textit,mistä löytyy kirjoitettu text joka siiretään dataan.
+    /**The save button for creating diary/päiväkirja*/
+    Button btnTallennaPK;
+
+    /**we use these to save the input into database*/
+    EditText editTextKirje,editTextOtsikko;
     private String paivakirjaPaiva;
     @Override
+    /**Here we create the database with the inputted data given by the user*/
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_paiva_kirja_kirjaaminen);
@@ -43,6 +47,7 @@ public class paivaKirja_kirjaaminen extends AppCompatActivity {
         btnTallennaPK.setOnClickListener(new View.OnClickListener() {
 
             @Override
+            /**here we save the inputs into database*/
             public void onClick(View view) {
 
 

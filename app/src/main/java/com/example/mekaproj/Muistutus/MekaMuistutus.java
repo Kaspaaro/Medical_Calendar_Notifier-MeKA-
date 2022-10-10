@@ -127,6 +127,7 @@ public class MekaMuistutus extends AppCompatActivity {
                 String days = Integer.toString(data);
                 String months = Integer.toString(month + 1);
                 String years = Integer.toString(year);
+
                 setStartingdate = days + "-" + months + "-" + years;
                 btnSDate.setText(setStartingdate);
             }

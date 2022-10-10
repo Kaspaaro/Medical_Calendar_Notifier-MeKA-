@@ -19,20 +19,31 @@ import java.util.List;
 public class MekaDataBase extends SQLiteOpenHelper{
 
     // Paivakirja database finals
+    /**The name of the SQLite database*/
     static final String DB_NAME = "DATABASE.db"; // NAME OF DataBase FILE
+    /**The name of the SQLite Data table of Päiväkirja*/
     public static final String PAIVAKIRJA_TABLE = "PAIVAKIRJA_TABLE"; // DATABASE TABLE (WHERE COLUMNS GO INTO)
+    /**This is the Header text in the SQLite Database Päiväkirja*/
     public static final String COLUMN_PAIVAKIRJA_OTSIKKO = "PAIVAKIRJA_OTSIKKO"; // TITLE FOR PAIVAKIRJA
+    /**The Story/text of Päiväkirja in SQLite Database*/
     public static final String COLUMN_PAIVAKIRJA_KIRJE = "PAIVAKIRJA_KIRJE"; // TEXT/STORY FOR PAIVAKIRJA
+   /**The Date/Päivä in SQLite Päiväkirja Database (Creation date for the diary)*/
     public static final String COLUMN_PAIVAKIRJA_PAIVA = "PAIVAKIRJA_PAIVA"; // DATE FOR PAIVAKIRJA
+   /**The Row ID in SQLite database*/
     public static final String COLUMN_ID = "ID"; //COLUMN ID
 
     // Muistutus database finals
-
+    /**The Reminder/Muistutus Table in SQLite Database*/
     public static final String MUISTUTUS_TABLE = "MUISTUTUS_TABLE"; // DATABASE TABLE (WHERE COLUMNS GO INTO)
+    /**The Reminder Date In SQLite Database Muistutus*/
     public static final String COLUMN_MUISTUTUS_SPAIVA = "MUISTUTUS_SPAIVA"; // START DAY
+    /**The Reminder Time/Aika (Clocktime) in SQLite Database*/
     public static final String COLUMN_MUISTUTUS_AIKA = "MUISTUTUS_AIKA"; // TIME
+    /**The Name of the reminder in SQLite database*/
     public static final String COLUMN_MUISTUTUS_NIMI = "MUISTUTUS_NIMI"; /* NAME */
+    /**The ROW Id of Muistutus SQLite Database*/
     public static final String COLUMN_ID_MUISTUTUS = "ID"; //COLUMN ID
+    /**The Notification ID of Muistutus for AlarmManager (this id is generated randomly by the program to use for AlarmManager notification ids.*/
     public static final String COLUMN_NOTIFYID = "NOTIFYID"; // RANDOM GENERATED ID FOR ALARM MANAGER.
 
 /////////////////////////////////////////////////////////////////////////////
@@ -46,6 +57,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
     //First time Muistutus database is created.
     //First time paivakirja database is created.
     @Override
+    /**Here we create the Databases needed to save user input Data and Dates + Time*/
     public void onCreate(SQLiteDatabase db) {
 
         // Creates values and database with sql code. for MUISTUTUS
@@ -59,6 +71,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
     //this is called if the database version is updated so old users dont lose data.
     @Override
+    /**If the Database is updated in the program this will drop the existing tables and create new ones*/
     public void onUpgrade(SQLiteDatabase sqLiteDatabase, int i, int i1) {
         String query = "DROP TABLE IF EXISTS " + MUISTUTUS_TABLE;  // MUISTUTUS sql query to check table with the same name or not
         String query2 = "DROP TABLE IF EXISTS " + PAIVAKIRJA_TABLE;  //PAIVAKIRJA sql query to check table with the same name or not
@@ -67,6 +80,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
         onCreate(sqLiteDatabase);
     }
 
+    /**Here we add new data into Muistutus/Reminder the database with given info from MuistutusData.java*/
     public boolean addOneMUIS (MuistutusData muistutusData){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -93,6 +107,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
 
     // Adds written data into the database
+    /**Here we add new data into Päiväkirja Database with given infromation from PäiväkirjaData*/
     public boolean addOnePK(PaivaKirjaData paivaKirjaData){
 
         SQLiteDatabase db = this.getWritableDatabase();
@@ -115,6 +130,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
     }
 
     ///REMOVES PAIVAKIRJA IF DELETE PRESSED
+    /**Removes the given row from Päiväkirja Database*/
     public boolean deleteOne (PaivaKirjaData paivaKirjaData){
         SQLiteDatabase db = getWritableDatabase();
         String queryString = "DELETE FROM " + PAIVAKIRJA_TABLE + " WHERE " + COLUMN_ID + " = " + paivaKirjaData.getID();
@@ -126,6 +142,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
         }
     }
     ///REMOVES MUISTUTUS IF DELETE PRESSED
+    /**Removes the given row from Muistutus Database*/
     public boolean deleteOneM (MuistutusData muistutusData){
         SQLiteDatabase db = getWritableDatabase();
         String queryString = "DELETE FROM " + MUISTUTUS_TABLE + " WHERE " + COLUMN_ID_MUISTUTUS + " = " + muistutusData.getIdM();
@@ -139,6 +156,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
 
     //Geteverything returns everything from the database.
+    /**With this we get Everything from the Päiväkirja Database(Table)*/
     public List<PaivaKirjaData> getEverything() {
 
         List<PaivaKirjaData> returnList = new ArrayList<>();
@@ -178,7 +196,7 @@ public class MekaDataBase extends SQLiteOpenHelper{
 
         return returnList;
     }
-
+    /**Gets All the data from Muistutus Database (Table)*/
     public List<MuistutusData> getMuitsAll() {
 
         List<MuistutusData> returnListm = new ArrayList<>();
