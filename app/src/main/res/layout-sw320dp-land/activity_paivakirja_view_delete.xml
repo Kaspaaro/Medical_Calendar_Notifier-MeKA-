@@ -11,7 +11,7 @@
         android:id="@+id/btn_Delete"
         android:layout_width="159dp"
         android:layout_height="55dp"
-        android:layout_marginBottom="70dp"
+        android:layout_marginBottom="80dp"
         android:background="@drawable/custom_buttons"
         android:onClick="btn_Delete_View"
         android:text="@string/Poista1"
@@ -19,31 +19,35 @@
         android:textColor="#FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/viewKirje" />
 
     <TextView
         android:id="@+id/viewKirje"
-        android:layout_width="385dp"
-        android:layout_height="427dp"
-        android:layout_marginBottom="32dp"
+        android:layout_width="598dp"
+        android:layout_height="206dp"
+        android:layout_marginTop="5dp"
+        android:layout_marginBottom="5dp"
         android:text="TextView"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/btn_Delete"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/viewOtsikko" />
 
     <TextView
         android:id="@+id/viewOtsikko"
         android:layout_width="323dp"
         android:layout_height="57dp"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="80dp"
         android:text="TextView"
         android:textAlignment="center"
-        android:textSize="20sp"
+        android:textSize="24sp"
         app:layout_constraintBottom_toTopOf="@+id/viewKirje"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

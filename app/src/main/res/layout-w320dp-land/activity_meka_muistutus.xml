@@ -13,7 +13,7 @@
         android:id="@+id/editTextMedicine"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        android:layout_marginTop="24dp"
         android:autofillHints=""
         android:ems="10"
         android:gravity="center"
@@ -37,15 +37,16 @@
         android:text="@string/tallenna1"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="@+id/editTextMedicine"
+        app:layout_constraintHorizontal_bias="0.48"
         app:layout_constraintStart_toStartOf="@+id/editTextMedicine"
         app:layout_constraintTop_toBottomOf="@+id/editTextMedicine"
-        app:layout_constraintVertical_bias="0.097" />
+        app:layout_constraintVertical_bias="0.0" />
 
     <Button
         android:id="@+id/btn_time"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="52dp"
+        android:layout_marginTop="24dp"
         android:background="@drawable/custom_buttons"
         android:backgroundTint="@color/teal_700"
         android:hint="@string/time"
@@ -59,27 +60,28 @@
         android:id="@+id/textView"
         android:layout_width="371dp"
         android:layout_height="24dp"
-        android:layout_marginTop="72dp"
         android:gravity="center"
         android:text="Add time, date and name of the pill"
         android:textColor="@color/teal_700"
         android:textSize="18dp"
         android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.082" />
 
     <Button
         android:id="@+id/btn_date"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="56dp"
+        android:layout_marginTop="12dp"
         android:background="@drawable/custom_buttons"
         android:backgroundTint="@color/teal_700"
         android:hint="@string/date"
         android:text="@string/Päivämäärä"
         app:layout_constraintEnd_toEndOf="@+id/textView"
-        app:layout_constraintHorizontal_bias="0.497"
+        app:layout_constraintHorizontal_bias="0.462"
         app:layout_constraintStart_toStartOf="@+id/textView"
         app:layout_constraintTop_toBottomOf="@+id/textView" />
 

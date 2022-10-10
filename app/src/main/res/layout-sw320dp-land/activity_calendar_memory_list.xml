@@ -9,10 +9,11 @@
 
     <ListView
         android:id="@+id/list_Memo_Calendar"
-        android:layout_width="412dp"
-        android:layout_height="646dp"
+        android:layout_width="709dp"
+        android:layout_height="304dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.493" />
 </androidx.constraintlayout.widget.ConstraintLayout>
