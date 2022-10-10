@@ -6,10 +6,13 @@ package com.example.mekaproj.PaivaKirja;
  */
 /**Here we send the information to the database that the user has inputed.*/
 public class PaivaKirjaData {
-
+    /**The row id of the database(selected data)*/
     private int id; // Database row id
+    /**Päiväkirja/Diary Header text*/
     private String otsikko; // Database Header text
+    /**The diary Story/Kirje for Päiväkirja*/
     private String kirje; // Database "kirje" text
+    /**The DATE when the diary was created*/
     private String paiva; // Database date text
 
     // Info from the database is sent into here and returned to other classes that call the methods.

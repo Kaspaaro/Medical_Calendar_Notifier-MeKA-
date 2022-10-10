@@ -18,9 +18,13 @@ import java.util.List;
  */
 /**here we create the view for clicked object of listview*/
 public class Paivakirja_view_delete extends AppCompatActivity {
+    /**This is the Textview for Story/Kirje/Text of the diary/Päiväkirja from database*/
     private TextView tv_Paivakirjadatakirje;  //Kirje Textview osio mihin on kirjoitettu tarina
+    /**The Header from database*/
     private TextView tv_Paivakirjadataotsikko; //Tarinan Otsikko
+    /**The Päiväkirja Data info for getting the Database*/
     private PaivaKirjaData getpk;
+    /**The Main DataBase where we can delete the data*/
     private MekaDataBase getdb;
     @Override
 
