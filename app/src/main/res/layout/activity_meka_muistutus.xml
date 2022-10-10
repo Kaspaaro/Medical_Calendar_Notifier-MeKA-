@@ -8,6 +8,7 @@
     android:background="@drawable/pill"
     tools:context=".Muistutus.MekaMuistutus">
 
+
     <EditText
         android:id="@+id/editTextMedicine"
         android:layout_width="wrap_content"
