@@ -33,7 +33,7 @@ public class AlertReceiver extends BroadcastReceiver {
         int id = bundle.getInt("id");
 
         //Click on Notification
-        Intent intent1 = new Intent(context, Calendar_memory_list.class);
+        Intent intent1 = new Intent(context, MainActivity.class);
 
         //Notification Builder
         NotificationManager notificationManager = (NotificationManager) context.getSystemService(Context.NOTIFICATION_SERVICE);
