@@ -3,7 +3,8 @@ package com.example.mekaproj.Muistutus;
  *
  * @author Kaspar Tullus
  */
-
+/**Here we got the methods for the Reminder,where we GET the ids and names for listview and other database saving/getting stuff.
+ * "Here we got GETTERS for Muistutus*/
 public class MuistutusData {
 
     /**Database medicine name row text*/

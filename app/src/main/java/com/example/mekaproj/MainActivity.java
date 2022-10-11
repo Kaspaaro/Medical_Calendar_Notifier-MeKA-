@@ -25,6 +25,7 @@ import com.example.mekaproj.PaivaKirja.paivaKirja_kirjaaminen;
  * @author Kaspar Tullus
  * @author Semen Morozov
  */
+/**This is the MainActivity where all the magic starts.*/
 public class MainActivity extends AppCompatActivity {
     /**Premission code for STORAGE (For asking premissions)*/
     private int STORAGE_PREMISSION = 245436;

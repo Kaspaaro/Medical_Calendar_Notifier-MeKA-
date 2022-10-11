@@ -9,6 +9,7 @@ import androidx.appcompat.app.AppCompatActivity;
  *
  * @author Semen Morozov
  */
+/**This is the very first starting screen for our app*/
 public class SplashActivity extends AppCompatActivity {
 
     @Override

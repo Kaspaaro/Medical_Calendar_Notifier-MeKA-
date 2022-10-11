@@ -18,6 +18,7 @@ import java.util.List;
  *
  * @author Kaspar Tullus
  */
+/**In here we create the Listview for the activity that gets the information from the DataBase*/
 public class Calendar_memory_list extends AppCompatActivity {
 
     //All we need for listview creation and data fetching.

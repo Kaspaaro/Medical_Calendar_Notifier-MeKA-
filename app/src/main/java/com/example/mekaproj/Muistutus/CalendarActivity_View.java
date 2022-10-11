@@ -21,7 +21,7 @@ import java.util.List;
  *
  * @author Kaspar Tullus
  */
-
+/**Here we check out and delete, the data we clicked in memory_list(ListView)*/
 public class CalendarActivity_View extends AppCompatActivity  {
 
     // Setting the properties needed to name the textviews on the activity.

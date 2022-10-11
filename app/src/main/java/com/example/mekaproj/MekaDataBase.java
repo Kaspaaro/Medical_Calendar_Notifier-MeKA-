@@ -16,6 +16,7 @@ import java.util.List;
  *
  * @author Kaspar Tullus
  */
+/**This is Where we store/Delete/Send/Get all of our data*/
 public class MekaDataBase extends SQLiteOpenHelper{
 
     // Paivakirja database finals

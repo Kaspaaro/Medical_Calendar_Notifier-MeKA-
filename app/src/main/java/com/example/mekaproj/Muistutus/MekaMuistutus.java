@@ -35,6 +35,8 @@ import java.util.Random;
  * @author Kaspar Tullus
  * @author Semen Morozov
  */
+/**In here we Gather all the inputs from the user and send it to the database,NotificationManager,AlarmManager
+ * to create data and notification pop ups for the app.*/
 public class MekaMuistutus extends AppCompatActivity {
 
     /**This is the activitys Date button*/
